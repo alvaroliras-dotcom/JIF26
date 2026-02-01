@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
               loading="lazy"
             />
             <img
-              src="/assets/logo-RSEQ.png"
+              src="/assets/logo-rseq.png"
               alt="RSEQ"
               className="h-14 md:h-20 w-auto opacity-90 hover:opacity-100 transition-all duration-300"
               loading="lazy"
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
             <div className="md:col-span-5">
               <img
-                src="/assets/LOGO-JIF26-SOLO.png"
+                src="/assets/logo-jif26-solo.png"
                 alt="JIF 2026"
                 className="h-16 w-auto mb-8"
                 loading="lazy"
