@@ -97,4 +97,45 @@ const Navbar: React.FC = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-900 focus:outline-none p-2"
             >
-              <svg classN
+              <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="lg:hidden bg-white border-t border-slate-100 overflow-y-auto absolute w-full top-20 left-0 shadow-2xl z-[90]">
+          <div className="px-6 py-8 space-y-8">
+            <div>
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Venue</p>
+              <div className="space-y-3 pl-2">
+                <Link to="/venue/location" className="block text-slate-800 font-bold" onClick={() => setIsOpen(false)}>
+                  Venue Location
+                </Link>
+                <Link to="/venue/how-to-get" className="block text-slate-800 font-bold" onClick={() => setIsOpen(false)}>
+                  How to get to Segovia
+                </Link>
+              </div>
+            </div>
+            <Link
+              to="/registration/fees"
+              className="block w-full bg-blue-600 text-white font-black px-4 py-4 rounded-xl text-center uppercase tracking-widest text-xs"
+              onClick={() => setIsOpen(false)}
+            >
+              Register Now
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
