@@ -17,7 +17,7 @@ const Home: React.FC = () => {
           {/* Overlay correcto (no plano) */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/55 to-slate-950/10" />
           {/* Overlay espectral (tu clase existente) */}
-          <div className="absolute inset-0 spectrum-overlay opacity-40" />
+          <div className="absolute inset-0 spectrum-overlay opacity-75 mix-blend-screen" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
