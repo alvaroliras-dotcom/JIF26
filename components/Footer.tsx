@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 text-slate-300">
-      {/* Sponsors Band (gris claro, no blanco) */}
+      {/* Sponsors Band (gris claro) */}
       <div className="bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <div className="text-center mb-10">
@@ -20,7 +20,6 @@ const Footer: React.FC = () => {
               className="h-20 md:h-24 w-auto opacity-95 hover:opacity-100 transition-all duration-300"
               loading="lazy"
             />
-
             <img
               src="/assets/logo-rseq.png"
               alt="RSEQ"
@@ -30,27 +29,27 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Separador espectral (leitmotiv controlado) */}
         <div className="h-[3px] w-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
       </div>
 
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
-          {/* Logo con leyenda (izquierda) */}
-          <div className="md:col-span-5">
-            {/* IMPORTANTE:
-               Cambia esta ruta al logo "con texto" (leyenda) que tú tienes.
-               Ej: /assets/logo-jif26-texto.png */}
-            <img
-              src="/assets/logo-jif26-texto.png"
-              alt="JIF 2026"
-              className="h-16 md:h-20 w-auto mb-8"
-              loading="lazy"
-            />
+        {/* 5 columnas (en desktop): 2/5 + 3/5 */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+          {/* LOGO (2/5) */}
+          <div className="lg:col-span-2">
+            {/* Placa clara para que el logo negro se vea */}
+            <div className="rounded-3xl bg-white px-8 py-10 shadow-sm border border-slate-200">
+              <img
+                src="/assets/logo-jif26-texto.png"
+                alt="JIF 2026"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+            </div>
 
-            {/* Badge espectral (detalle premium) */}
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2">
+            {/* Badge espectral */}
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2">
               <span className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500" />
               <span className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-slate-200/80">
                 Segovia · 2026
@@ -58,8 +57,8 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Texto evento (derecha) */}
-          <div className="md:col-span-7">
+          {/* CONTENIDO (3/5) */}
+          <div className="lg:col-span-3">
             <h3 className="text-white font-black text-lg md:text-xl leading-tight uppercase tracking-tight">
               IX Jornadas Ibéricas de Fotoquímica & II Franco-Iberian Conference on Photochemistry
             </h3>
@@ -69,8 +68,8 @@ const Footer: React.FC = () => {
               Held at Campus María Zambrano, Segovia, Spain. September 2nd to 4th, 2026.
             </p>
 
-            {/* Links (si quieres mantenerlos, aquí quedan ordenados) */}
-            <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-10">
+            {/* Links en 3 columnas dentro del bloque 3/5 */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-10">
               <div className="space-y-4">
                 <h4 className="text-white font-black text-xs uppercase tracking-[0.22em] pb-3 border-b border-white/10">
                   Venue
@@ -121,6 +120,7 @@ const Footer: React.FC = () => {
                 <h4 className="text-white font-black text-xs uppercase tracking-[0.22em] pb-3 border-b border-white/10">
                   Contact
                 </h4>
+
                 <a
                   href="mailto:jif2026.segovia@gmail.com"
                   className="inline-flex items-center gap-2 text-white font-black text-sm hover:opacity-90 transition"
@@ -128,7 +128,8 @@ const Footer: React.FC = () => {
                   <span className="h-2 w-2 rounded-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500" />
                   jif2026.segovia@gmail.com
                 </a>
-                <p className="text-[13px] text-slate-300/80 font-medium leading-relaxed">
+
+                <p className="mt-3 text-[13px] text-slate-300/80 font-medium leading-relaxed">
                   Universidad de Valladolid
                   <br />
                   Campus María Zambrano
