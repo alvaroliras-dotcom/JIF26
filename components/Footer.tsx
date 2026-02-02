@@ -150,7 +150,7 @@ const Footer: React.FC = () => {
           </p>
           <p className="text-slate-400 text-[11px] font-bold uppercase tracking-[0.2em]">
             Website by{' '}
-            <a href="tttps://www.elgordoyelflaco.es" className="text-white hover:opacity-90 transition">
+            <a href="https://www.elgordoyelflaco.es" className="text-white hover:opacity-90 transition">
               El Gordo y El Flaco
             </a>
           </p>
