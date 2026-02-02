@@ -34,18 +34,19 @@ const Footer: React.FC = () => {
 
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* 5 columnas (en desktop): 2/5 + 3/5 */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-          {/* LOGO (2/5) */}
+          {/* LOGO (2/5) — limitado en altura para no comerse el footer */}
           <div className="lg:col-span-2">
-            {/* Placa clara para que el logo negro se vea */}
-            <div className="rounded-3xl bg-white px-8 py-10 shadow-sm border border-slate-200">
-              <img
-                src="/assets/logo-jif26-texto.png"
-                alt="JIF 2026"
-                className="w-full h-auto"
-                loading="lazy"
-              />
+            {/* La tarjeta ya no puede ser gigante: le ponemos un techo */}
+            <div className="rounded-3xl bg-white px-8 py-8 shadow-sm border border-slate-200">
+              <div className="flex items-center justify-center">
+                <img
+                  src="/assets/logo-jif26-texto.png"
+                  alt="JIF 2026"
+                  className="w-full h-auto max-h-[260px] object-contain"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
             {/* Badge espectral */}
@@ -59,7 +60,8 @@ const Footer: React.FC = () => {
 
           {/* CONTENIDO (3/5) */}
           <div className="lg:col-span-3">
-            <h3 className="text-white font-black text-lg md:text-xl leading-tight uppercase tracking-tight">
+            {/* Bloque editorial con mejor ritmo */}
+            <h3 className="text-white font-black text-lg md:text-xl leading-snug uppercase tracking-tight">
               IX Jornadas Ibéricas de Fotoquímica & II Franco-Iberian Conference on Photochemistry
             </h3>
 
@@ -68,8 +70,8 @@ const Footer: React.FC = () => {
               Held at Campus María Zambrano, Segovia, Spain. September 2nd to 4th, 2026.
             </p>
 
-            {/* Links en 3 columnas dentro del bloque 3/5 */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-10">
+            {/* Aquí empujamos los bloques de links hacia abajo con aire controlado */}
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-10">
               <div className="space-y-4">
                 <h4 className="text-white font-black text-xs uppercase tracking-[0.22em] pb-3 border-b border-white/10">
                   Venue
