@@ -97,7 +97,7 @@ const TouristInfo: React.FC = () => {
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0">
           <img
-            src="/assets/otras/09-acueducto-segovia.jpg"
+            src="/assets/otras/hero-acueducto-segovia.jpg"
             alt="Segovia Roman Aqueduct"
             className="w-full h-full object-cover scale-[1.02]"
             loading="eager"
