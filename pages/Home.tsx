@@ -24,7 +24,7 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left (2/3 aprox) */}
             <div className="lg:col-span-8 text-white">
-              {/* Chip superior (adiós filete azul) */}
+              {/* Chip superior */}
               <div className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500" />
                 <span className="text-[11px] font-black uppercase tracking-[0.28em] text-white/90">
@@ -40,25 +40,53 @@ const Home: React.FC = () => {
                   <span className="block text-2xl md:text-4xl lg:text-5xl font-medium text-white/80 mt-6 max-w-3xl leading-tight">
                     II Franco-Iberian Conference on Photochemistry
                   </span>
+                  <span className="block text-sm md:text-base font-black uppercase tracking-[0.28em] text-white/60 mt-6">
+                    (9’JIF) & (2’FICP)
+                  </span>
                 </h1>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6 text-base md:text-lg font-semibold text-white/80">
                   <span className="flex items-center">
-                    <svg className="w-5 h-5 mr-3 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <svg
+                      className="w-5 h-5 mr-3 opacity-80"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
                     </svg>
                     September 2nd to 4th, 2026
                   </span>
                   <span className="flex items-center">
-                    <svg className="w-5 h-5 mr-3 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <svg
+                      className="w-5 h-5 mr-3 opacity-80"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
                     </svg>
                     Segovia, Spain
                   </span>
                 </div>
 
-                {/* CTAs (premium) */}
+                {/* CTAs */}
                 <div className="flex flex-wrap gap-4 pt-6">
                   <Link
                     to="/registration/fees"
@@ -78,7 +106,6 @@ const Home: React.FC = () => {
 
             {/* Right (1/3 aprox) */}
             <div className="hidden lg:flex lg:col-span-4 justify-end items-center">
-              {/* Placa para que el logo negro se vea */}
               <div className="w-full max-w-[360px] rounded-3xl bg-white/95 border border-slate-200 shadow-xl p-10">
                 <img
                   src="/assets/logo-jif26-texto.png"
@@ -99,22 +126,76 @@ const Home: React.FC = () => {
             Welcome
           </h2>
           <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-12"></div>
+
           <div className="prose prose-xl text-slate-600 max-w-none space-y-8 leading-relaxed">
             <p className="font-bold text-slate-900 italic text-2xl">
-              Welcome to the IX Jornadas Ibéricas de Fotoquímica (9’JIF) & II Franco-Iberian Conference on Photochemistry (2’FICP)
+              Welcome to the IX Jornadas Ibéricas de Fotoquímica (9’JIF) & II
+              Franco-Iberian Conference on Photochemistry (2’FICP)
             </p>
+
             <p>
-              The Grupo Especializado de Fotoquímica of the Real Sociedad Española de Química (GRUFO-RSEQ) and the Grupo de Fotoquímica of the Sociedade Portuguesa de Química (SPQ) cordially invite you to participate in the Ninth Jornadas Ibéricas de Fotoquímica (9’JIF). To strengthen the cooperation with the Photochimie, Photophysique et Photosciences division (SP2P) of the Société Chimique de France (SCF), we are pleased to host the II Franco-Iberian Conference on Photochemistry (2’FICP).
+              The Grupo Especializado de Fotoquímica of the Real Sociedad Española
+              de Química (GRUFO-RSEQ) and the Grupo de Fotoquímica of the Sociedade
+              Portuguesa de Química (SPQ) cordially invite you to participate in
+              the Ninth Jornadas Ibéricas de Fotoquímica (9’JIF). To strengthen the
+              cooperation with the Photochimie, Photophysique et Photosciences
+              division (SP2P) of the Société Chimique de France (SCF), we are
+              pleased to host the II Franco-Iberian Conference on Photochemistry
+              (2’FICP).
             </p>
+
             <p>
-              The meeting will be held from <strong>September 2nd to 4th, 2026</strong> at the Campus María Zambrano Segovia, Universidad de Valladolid, in Segovia (Castilla y León), Spain.
+              The meeting will be held from{" "}
+              <strong>September 2nd to 4th, 2026</strong> at the{" "}
+              <strong>
+                Campus María Zambrano Segovia, Universidad de Valladolid
+              </strong>
+              , in Segovia (Castilla y León), Spain.
             </p>
-            <p className="font-black text-slate-900 text-3xl pt-8">We hope to see you in Segovia!</p>
+
+            {/* ✅ FALTABA en tu HOME */}
+            <p>
+              The 9’JIF meeting builds on the tradition of the previous ones
+              (Santiago de Compostela in 2003, Faro in 2007, Granada in 2011,
+              Lisbon in 2014, Toledo in 2016, Aveiro in 2018, Alcalá de Henares
+              in 2022 and Lisbon in 2024) to foster collaboration among Spanish,
+              Portuguese, and French photochemistry communities. This event will
+              delve into the latest advancements in both fundamental and applied
+              photochemistry, spanning a broad array of chemical, physical, and
+              biological processes studied using light.
+            </p>
+
+            <p className="font-black text-slate-900 text-3xl pt-8">
+              We hope to see you in Segovia!
+            </p>
+
+            {/* ✅ Cierre extra del Word */}
+            <p>
+              We are excited to host this prestigious gathering of photochemistry
+              researchers and students, and we look forward to your active
+              participation in what promises to be an enriching and collaborative
+              event.
+            </p>
+
+            <p>
+              For any additional information or assistance, please do not hesitate
+              to contact us.
+            </p>
+
+            {/* CTA suave a Contact (si existe ruta) */}
+            <div className="pt-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
+              >
+                Contact
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* IMPORTANT DATES (menos viejuno) */}
+      {/* IMPORTANT DATES */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -142,16 +223,28 @@ const Home: React.FC = () => {
 
                 <div className="mt-8 space-y-5 text-sm">
                   <div className="flex justify-between items-baseline pb-3 border-b border-slate-100">
-                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Opens</span>
-                    <span className="font-black text-slate-900 text-base">15th March</span>
+                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">
+                      Opens
+                    </span>
+                    <span className="font-black text-slate-900 text-base">
+                      15th March
+                    </span>
                   </div>
                   <div className="flex justify-between items-baseline pb-3 border-b border-slate-100">
-                    <span className="text-fuchsia-600 font-black uppercase tracking-widest text-[10px]">Deadline</span>
-                    <span className="font-black text-fuchsia-700 text-base">1st May</span>
+                    <span className="text-fuchsia-600 font-black uppercase tracking-widest text-[10px]">
+                      Deadline
+                    </span>
+                    <span className="font-black text-fuchsia-700 text-base">
+                      1st May
+                    </span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Notification</span>
-                    <span className="font-black text-slate-900 text-base">15th June</span>
+                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">
+                      Notification
+                    </span>
+                    <span className="font-black text-slate-900 text-base">
+                      15th June
+                    </span>
                   </div>
                 </div>
               </div>
@@ -172,40 +265,62 @@ const Home: React.FC = () => {
 
                 <div className="mt-8 space-y-5 text-sm">
                   <div className="flex justify-between items-baseline pb-3 border-b border-slate-100">
-                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Opens</span>
-                    <span className="font-black text-slate-900 text-base">1st March</span>
+                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">
+                      Opens
+                    </span>
+                    <span className="font-black text-slate-900 text-base">
+                      1st March
+                    </span>
                   </div>
                   <div className="flex justify-between items-baseline pb-3 border-b border-slate-100">
-                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Early Bird</span>
-                    <span className="font-black text-slate-900 text-base">30th June</span>
+                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">
+                      Early Registration
+                    </span>
+                    <span className="font-black text-slate-900 text-base">
+                      30th June
+                    </span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Regular</span>
-                    <span className="font-black text-slate-900 text-base">1st September</span>
+                    <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">
+                      Late Registration
+                    </span>
+                    <span className="font-black text-slate-900 text-base">
+                      1st September
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Mini-CTA opcional */}
+          <div className="mt-12 text-center">
+            <Link
+              to="/abstracts/submission"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
+            >
+              Abstract Submission Details
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* SCIENTIFIC FORMATS (hover premium, no azul chillón) */}
+      {/* PRESENTATION GUIDELINES / FORMATS */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
-              Scientific Formats
+              Presentation Guidelines
             </h2>
             <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { code: "PL", title: "Plenary Lectures", desc: "40 min + 5 min Q&A" },
-              { code: "IL", title: "Invited Lectures", desc: "25 min + 5 min Q&A" },
-              { code: "OC", title: "Oral Sessions", desc: "12 min + 3 min Q&A" },
-              { code: "PP", title: "Poster Session", desc: "Size A0 Portrait" },
+              { code: "PL", title: "Plenary Lectures", desc: "40 minutes + 5 minutes Q&A" },
+              { code: "IL", title: "Invited Lectures", desc: "25 minutes + 5 minutes Q&A" },
+              { code: "OC", title: "Oral Presentations", desc: "12 minutes + 3 minutes Q&A" },
+              { code: "PP", title: "Poster Presentations", desc: "A0 Portrait (841 × 1189 mm)" },
             ].map((f) => (
               <div
                 key={f.code}
@@ -225,7 +340,76 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA (adiós banda azul fea) */}
+      {/* ✅ MEALS AND SOCIAL EVENTS (FALTABA) */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
+              Meals and Social Events
+            </h2>
+            <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Welcome Reception",
+                subtitle: "September 2nd (evening/late afternoon)",
+                text:
+                  "A small welcome reception with drinks and snacks will be held at the Conference Venue on the evening/late afternoon of September 2nd.",
+              },
+              {
+                title: "Lunches",
+                subtitle: "Included with registration",
+                text:
+                  "Lunches are included with the registration fee and will be served in the conference venue.",
+              },
+              {
+                title: "Conference Dinner",
+                subtitle: "September 3rd (to be determined)",
+                text:
+                  "The registration fee includes the Conference Dinner. It will be held on September 3rd, to be determined.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition overflow-hidden"
+              >
+                <div className="h-[3px] w-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
+                <div className="p-10">
+                  <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight">
+                    {item.title}
+                  </h4>
+                  <p className="mt-2 text-xs font-black uppercase tracking-[0.22em] text-slate-400">
+                    {item.subtitle}
+                  </p>
+                  <p className="mt-6 text-slate-600 leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ✅ AWARDS AND PRIZES (FALTABA) */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
+            Awards and Prizes
+          </h2>
+          <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-10"></div>
+
+          <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-10">
+            <p className="text-slate-700 text-lg font-bold">
+              To be determined
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="relative overflow-hidden bg-slate-950">
         <div className="absolute inset-0 spectrum-overlay opacity-20 pointer-events-none"></div>
         <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
