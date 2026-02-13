@@ -41,13 +41,13 @@ const InternationalCommittee: React.FC = () => {
       affiliation: "Université de Haute-Alsace / CNRS",
       // En el Word no viene cargo: dejamos placeholder
       title: PLACEHOLDER_TITLE,
-      photo: "/assets/ponentes/olivier-soppera.jpg",
+      photo: "/assets/ponentes/ilivier-soppera.jpg",
     },
     {
       name: "Nathan D. McClenaghan",
       affiliation: "Université de Bordeaux / CNRS",
       title: "CNRS Research Director",
-      photo: "/assets/ponentes/nathan-mcclenaghan.jpg",
+      photo: "/assets/ponentes/nathan-mcClenaghan.jpg",
     },
   ];
 
