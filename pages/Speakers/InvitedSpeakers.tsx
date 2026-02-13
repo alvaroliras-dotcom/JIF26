@@ -15,7 +15,7 @@ const InvitedSpeakers: React.FC = () => {
       affiliation: "Universitat Politècnica de València",
       title: "Full Professor",
       topic: "Heterogeneous (photo)catalysis for energy and environmental applications.",
-      photo: "/assets/ponentes/sergio-navalon-oltra.jpg",
+      photo: "/assets/ponentes/sergio-navalon.jpg",
     },
     {
       name: "Ángel Orte Gutiérrez",
@@ -23,7 +23,7 @@ const InvitedSpeakers: React.FC = () => {
       title: "Full Professor",
       topic:
         "Rational design of smart luminescent materials with high-performance microscopy for cellular signalling and biomarker analysis",
-      photo: "/assets/ponentes/angel-orte-gutierrez.jpg",
+      photo: "/assets/ponentes/angel-orte.jpg",
     },
     {
       name: "Inmaculada Andreu Ros",
@@ -31,7 +31,7 @@ const InvitedSpeakers: React.FC = () => {
       title: "Associate Professor",
       topic:
         "Photochemical and photobiological mechanisms of light-induced cellular damage by anticancer drugs and nanomaterials, with emphasis on oxidative processes and therapeutic modulation",
-      photo: "/assets/ponentes/inmaculada-andreu-ros.jpg",
+      photo: "/assets/ponentes/inma-andreu.jpg",
     },
     {
       name: "Olga Crespo Zaragoza",
@@ -47,7 +47,7 @@ const InvitedSpeakers: React.FC = () => {
       title: "Ramon & Cajal Researcher",
       topic:
         "Development and study of polymer microreactors functionalized with catalysts for the production of solar fuels and chemicals through artificial photosynthesis.",
-      photo: "/assets/ponentes/carla-casadevall-serrano.jpg",
+      photo: "/assets/ponentes/carla-casadevall.jpg",
     },
     {
       name: "Leyre Marzo Puerta",
@@ -55,14 +55,14 @@ const InvitedSpeakers: React.FC = () => {
       title: "Ramón & Cajal Researcher",
       topic:
         "Development of sustainable transformations in organic synthesis, with particular interest in the use of photocatalysis and electrochemistry",
-      photo: "/assets/ponentes/leyre-marzo-puerta.jpg",
+      photo: "/assets/ponentes/leyre-marzo.jpg",
     },
     {
       name: "Luis Bañares Morcillo",
       affiliation: "Universidad Complutense de Madrid",
       title: "Professor of Physical Chemistry and Director of the Center for Ultrafast Lasers",
       topic: "Chemical reaction dynamics, photochemistry and femtochemistry",
-      photo: "/assets/ponentes/luis-banares-morcillo.jpg",
+      photo: "/assets/ponentes/luis-banares.jpg",
     },
     {
       name: "Santi Nonell",
@@ -76,7 +76,7 @@ const InvitedSpeakers: React.FC = () => {
       affiliation: "Institut des Sciences Chimiques de Rennes (ISCR) and INSA Rennes",
       title: "CNRS Research Director",
       topic: "New multifunctional and photoactive solid-state molecular materials",
-      photo: "/assets/ponentes/christophe-lescop.jpg",
+      photo: "/assets/ponentes/christoph-lescop.jpg",
     },
     {
       name: "Sophie Sobanska",
@@ -137,7 +137,7 @@ const InvitedSpeakers: React.FC = () => {
       title: "Associate Professor",
       topic:
         "Photo-responsive systems for controlled delivery of molecules/drugs, optical probes for chemosensing and bioimaging, and bioinspired photonic systems.",
-      photo: "/assets/ponentes/susana-paula-graca-costa.jpg",
+      photo: "/assets/ponentes/susana-costa.jpg",
     },
   ];
 
