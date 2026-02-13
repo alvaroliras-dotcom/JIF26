@@ -72,7 +72,7 @@ const InternationalCommittee: React.FC = () => {
               className="group bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl transition overflow-hidden"
             >
               {/* Foto */}
-              <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+              <div className="relative aspect-square bg-slate-100 overflow-hidden">
                 <img
                   src={m.photo}
                   alt={m.name}
