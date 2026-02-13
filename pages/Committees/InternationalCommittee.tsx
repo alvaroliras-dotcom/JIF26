@@ -26,12 +26,12 @@ const InternationalCommittee: React.FC = () => {
     {
       name: "Olivier Soppera",
       affiliation: "Université de Haute-Alsace / CNRS",
-      image: "/assets/ponentes/olivier-soppera.jpg",
+      image: "/assets/ponentes/ilivier-soppera.jpg",
     },
     {
       name: "Nathan D. McClenaghan",
       affiliation: "Université de Bordeaux / CNRS",
-      image: "/assets/ponentes/nathan-mcclenaghan.jpg",
+      image: "/assets/ponentes/nathan-mcClenaghan.jpg",
     },
   ];
 
