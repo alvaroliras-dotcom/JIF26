@@ -28,7 +28,7 @@ const InternationalCommittee: React.FC = () => {
       affiliation: "Universidade NOVA de Lisboa",
       // En el Word no viene cargo: dejamos placeholder
       title: PLACEHOLDER_TITLE,
-      photo: "/assets/ponentes/joao-sergio.jpg",
+      photo: "/assets/ponentes/joao-carlos-lima.jpg",
     },
     {
       name: "João Pina",
