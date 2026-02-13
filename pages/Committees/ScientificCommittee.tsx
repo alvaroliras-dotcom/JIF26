@@ -20,13 +20,13 @@ const ScientificCommittee: React.FC = () => {
       affiliation:
         "Instituto de Tecnología Química (CSIC-Universitat Politècnica de València)",
       title: "Scientific Researcher of Chemistry",
-      photo: "/assets/ponentes/virginie-lhiaubet-vallet.jpg",
+      photo: "/assets/ponentes/virginie-lhiaubet.jpg",
     },
     {
       name: "Wajih Al-Soufi",
       affiliation: "Universidad de Santiago de Compostela",
       title: "Full Professor of Physical Chemistry",
-      photo: "/assets/ponentes/wajih-al-soufi.jpg",
+      photo: "/assets/ponentes/wajih-al-Soufi.jpg",
     },
     {
       name: "João Pina",
@@ -44,7 +44,7 @@ const ScientificCommittee: React.FC = () => {
       name: "Carlos Baleisão",
       affiliation: "Instituto Superior Técnico",
       title: "Associate Professor of Chemistry",
-      photo: "/assets/ponentes/carlos-baleisao.jpg",
+      photo: "/assets/ponentes/carlos-beleizao.jpg",
     },
     {
       name: "Karine Loubiere",
