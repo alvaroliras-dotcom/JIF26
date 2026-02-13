@@ -21,7 +21,7 @@ const InternationalCommittee: React.FC = () => {
       name: "Raúl Pérez-Ruiz",
       affiliation: "Universitat Politècnica de València",
       title: "Associate Professor of Organic Chemistry",
-      photo: "/assets/ponentes/raul-perez-ruiz-01.jpg",
+      photo: "/assets/ponentes/raul-perez.jpg",
     },
     {
       name: "João C. Lima",
