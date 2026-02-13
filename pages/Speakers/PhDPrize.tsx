@@ -18,7 +18,7 @@ const PhDPrize: React.FC = () => {
       affiliation: "Universidad Autónoma de Madrid",
       thesisTitle:
         "The impact of oxo functionalization in the photophysics and photochemistry of nucleobases: implications in prebiotic chemistry and the current composition of nucleic acids",
-      // photo: "/assets/ponentes/eva-vos.jpg",
+      photo: "/assets/ponentes/eva-vos.jpg",
       status: "pending",
     },
     {
@@ -27,7 +27,7 @@ const PhDPrize: React.FC = () => {
       affiliation: "Universitat Autònoma de Barcelona",
       thesisTitle:
         "New optical systems based on organic phase change materials: from fluorochromic inks and sensors to smart windows",
-      // photo: "/assets/ponentes/jaume-otaegui.jpg",
+      photo: "/assets/ponentes/jaume-otaegui.jpg",
       status: "confirmed",
     },
     {
@@ -36,7 +36,7 @@ const PhDPrize: React.FC = () => {
       affiliation: "Universitat de València",
       thesisTitle:
         "Atmospheric chemistry of mercury and sulfur induced by sunlight: Quantum-chemical modelling and environmental implications",
-      // photo: "/assets/ponentes/javier-carmona.jpg",
+      photo: "/assets/ponentes/javier-carmona.jpg",
       status: "confirmed",
     },
   ];
