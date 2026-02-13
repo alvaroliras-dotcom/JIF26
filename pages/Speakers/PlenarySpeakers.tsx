@@ -28,7 +28,7 @@ const PlenarySpeakers: React.FC = () => {
       title: "Associate Professor",
       bio:
         "Director of the Coimbra Chemistry Centre (since 2024) and leader of the Photochemistry Group at the University of Coimbra. His work spans fast reaction kinetics, laser-based photochemical studies and advanced photophysical processes, with extensive publication and supervision experience.",
-      photo: "/assets/ponentes/joao-sergio-seixas-de-melo.jpg", // ajusta si tu archivo se llama distinto
+      photo: "/assets/ponentes/joao-sergio.jpg", // ajusta si tu archivo se llama distinto
     },
     {
       code: "PL3",
