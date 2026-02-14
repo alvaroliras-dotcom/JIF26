@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 
 const AbstractSubmission: React.FC = () => {
   const TEMPLATE_URL = "/assets/downloads/IXJIF-Abstract-Template.docx";
@@ -6,6 +6,10 @@ const AbstractSubmission: React.FC = () => {
 
   // Formspree endpoint
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjgewkqk";
+
+  // Redirect back to this SPA route after submit:
+  // Put the query BEFORE the hash so the SPA can read it.
+  const NEXT_URL = "https://jif-26.vercel.app/?submitted=1#/abstracts/submission";
 
   const TOPICS = [
     "Photocatalysis",
@@ -18,16 +22,11 @@ const AbstractSubmission: React.FC = () => {
     "Other",
   ];
 
-  // Form fields
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [presentationType, setPresentationType] = useState<"oral" | "poster" | "">("");
-  const [topic, setTopic] = useState("");
-  const [file, setFile] = useState<File | null>(null);
-
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const wasSubmitted = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    const params = new URLSearchParams(window.location.search);
+    return params.get("submitted") === "1";
+  }, []);
 
   const Badge: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <span className="inline-flex items-center justify-center px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.22em] bg-slate-900 text-white">
@@ -44,74 +43,6 @@ const AbstractSubmission: React.FC = () => {
       </div>
     </div>
   );
-
-  function isAllowedDoc(f: File) {
-    const name = f.name.toLowerCase();
-    return name.endsWith(".doc") || name.endsWith(".docx");
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    setErrorMsg("");
-
-    if (!firstName || !lastName || !contactEmail || !presentationType || !topic) {
-      setStatus("error");
-      setErrorMsg("Please complete all fields.");
-      return;
-    }
-
-    if (!file) {
-      setStatus("error");
-      setErrorMsg("Please attach your abstract file (.doc or .docx).");
-      return;
-    }
-
-    if (!isAllowedDoc(file)) {
-      setStatus("error");
-      setErrorMsg("Invalid file type. Please upload a .doc or .docx file.");
-      return;
-    }
-
-    try {
-      // IMPORTANT: file upload requires multipart/form-data
-      const formData = new FormData();
-      formData.append("firstName", firstName);
-      formData.append("lastName", lastName);
-      formData.append("email", contactEmail);
-      formData.append(
-        "presentationType",
-        presentationType === "oral" ? "Oral presentation" : "Poster presentation"
-      );
-      formData.append("topic", topic);
-
-      // subject for the email notification
-      formData.append(
-        "_subject",
-        `Abstract submission (JIF 2026) — ${presentationType.toUpperCase()} — ${topic}`
-      );
-
-      // Attach file (name can be anything; "attachment" is a common convention)
-      formData.append("attachment", file);
-
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (!res.ok) throw new Error("Formspree request failed");
-
-      setStatus("sent");
-      // Optional: reset
-      // setFirstName(""); setLastName(""); setContactEmail(""); setPresentationType(""); setTopic(""); setFile(null);
-    } catch (err) {
-      setStatus("error");
-      setErrorMsg("Could not send. Please try again.");
-    }
-  }
 
   return (
     <div className="animate-in fade-in duration-700">
@@ -154,11 +85,11 @@ const AbstractSubmission: React.FC = () => {
                   <li className="flex gap-3">
                     <span className="mt-1.5 h-2 w-2 rounded-full bg-slate-900 shrink-0" />
                     <span>
-                      <strong>Abstracts format</strong> must use the official template{" "}
+                      <strong>Abstract format</strong> must use the official template{" "}
                       <a
                         href={TEMPLATE_URL}
-                        className="font-black text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-900 transition"
                         download
+                        className="font-black text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-900 transition"
                       >
                         (download template)
                       </a>
@@ -243,15 +174,22 @@ const AbstractSubmission: React.FC = () => {
               <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
                 <div className="h-[3px] w-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
                 <div className="p-8">
-                  <form onSubmit={handleSubmit}>
+                  <form
+                    action={FORMSPREE_ENDPOINT}
+                    method="POST"
+                    encType="multipart/form-data"
+                  >
+                    {/* Email subject */}
+                    <input type="hidden" name="_subject" value="Abstract submission (JIF 2026)" />
+                    {/* Redirect back to your site after submit */}
+                    <input type="hidden" name="_next" value={NEXT_URL} />
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-[11px] font-black uppercase tracking-[0.28em] text-slate-500">
                           First name
                         </label>
                         <input
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
                           name="firstName"
                           type="text"
                           required
@@ -265,8 +203,6 @@ const AbstractSubmission: React.FC = () => {
                           Last name
                         </label>
                         <input
-                          value={lastName}
-                          onChange={(e) => setLastName(e.target.value)}
                           name="lastName"
                           type="text"
                           required
@@ -280,8 +216,6 @@ const AbstractSubmission: React.FC = () => {
                           Email
                         </label>
                         <input
-                          value={contactEmail}
-                          onChange={(e) => setContactEmail(e.target.value)}
                           name="email"
                           type="email"
                           required
@@ -300,8 +234,7 @@ const AbstractSubmission: React.FC = () => {
                             <input
                               type="radio"
                               name="presentationType"
-                              checked={presentationType === "oral"}
-                              onChange={() => setPresentationType("oral")}
+                              value="Oral presentation"
                               required
                             />
                             <span className="font-medium text-slate-800">Oral presentation</span>
@@ -311,8 +244,7 @@ const AbstractSubmission: React.FC = () => {
                             <input
                               type="radio"
                               name="presentationType"
-                              checked={presentationType === "poster"}
-                              onChange={() => setPresentationType("poster")}
+                              value="Poster presentation"
                               required
                             />
                             <span className="font-medium text-slate-800">Poster presentation</span>
@@ -325,10 +257,9 @@ const AbstractSubmission: React.FC = () => {
                           Topic
                         </label>
                         <select
-                          value={topic}
-                          onChange={(e) => setTopic(e.target.value)}
                           name="topic"
                           required
+                          defaultValue=""
                           className="mt-2 w-full rounded-xl border border-slate-200 bg-white p-3 font-medium text-slate-800 outline-none focus:ring-2 focus:ring-slate-900/20"
                         >
                           <option value="" disabled>
@@ -351,11 +282,10 @@ const AbstractSubmission: React.FC = () => {
                           name="attachment"
                           accept=".doc,.docx"
                           required
-                          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
                           className="mt-2 w-full rounded-xl border border-slate-200 bg-white p-3 font-medium text-slate-800 outline-none focus:ring-2 focus:ring-slate-900/20 file:mr-4 file:rounded-lg file:border-0 file:bg-slate-900 file:px-4 file:py-2 file:text-white file:font-bold hover:file:bg-slate-800"
                         />
                         <p className="mt-2 text-xs text-slate-500">
-                          Please upload only .doc or .docx (max size depends on the platform limits).
+                          Please upload only .doc or .docx.
                         </p>
                       </div>
                     </div>
@@ -363,21 +293,16 @@ const AbstractSubmission: React.FC = () => {
                     <div className="mt-8 flex flex-col sm:flex-row gap-4">
                       <button
                         type="submit"
-                        disabled={status === "sending"}
-                        className="inline-flex justify-center items-center px-8 py-4 rounded-2xl bg-slate-900 text-white font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-800 transition disabled:opacity-60"
+                        className="inline-flex justify-center items-center px-8 py-4 rounded-2xl bg-slate-900 text-white font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-800 transition"
                       >
-                        {status === "sending" ? "Sending…" : "Send"}
+                        Send
                       </button>
                     </div>
 
-                    {status === "sent" && (
+                    {wasSubmitted && (
                       <p className="mt-6 text-xs text-slate-600 leading-relaxed">
                         Submission sent. If you don’t receive confirmation, contact <strong>{EMAIL}</strong>.
                       </p>
-                    )}
-
-                    {status === "error" && (
-                      <p className="mt-6 text-xs text-red-600 leading-relaxed">{errorMsg}</p>
                     )}
                   </form>
                 </div>
