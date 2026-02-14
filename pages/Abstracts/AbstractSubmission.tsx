@@ -18,12 +18,13 @@ const AbstractSubmission: React.FC = () => {
     "Other",
   ];
 
-  // Form (abstract submission metadata)
+  // Form fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [presentationType, setPresentationType] = useState<"oral" | "poster" | "">("");
   const [topic, setTopic] = useState("");
+  const [file, setFile] = useState<File | null>(null);
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -44,6 +45,11 @@ const AbstractSubmission: React.FC = () => {
     </div>
   );
 
+  function isAllowedDoc(f: File) {
+    const name = f.name.toLowerCase();
+    return name.endsWith(".doc") || name.endsWith(".docx");
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
@@ -55,33 +61,55 @@ const AbstractSubmission: React.FC = () => {
       return;
     }
 
+    if (!file) {
+      setStatus("error");
+      setErrorMsg("Please attach your abstract file (.doc or .docx).");
+      return;
+    }
+
+    if (!isAllowedDoc(file)) {
+      setStatus("error");
+      setErrorMsg("Invalid file type. Please upload a .doc or .docx file.");
+      return;
+    }
+
     try {
-      const payload = {
-        firstName,
-        lastName,
-        email: contactEmail,
-        presentationType: presentationType === "oral" ? "Oral presentation" : "Poster presentation",
-        topic,
-        _subject: `Abstract submission (JIF 2026) — ${presentationType.toUpperCase()} — ${topic}`,
-      };
+      // IMPORTANT: file upload requires multipart/form-data
+      const formData = new FormData();
+      formData.append("firstName", firstName);
+      formData.append("lastName", lastName);
+      formData.append("email", contactEmail);
+      formData.append(
+        "presentationType",
+        presentationType === "oral" ? "Oral presentation" : "Poster presentation"
+      );
+      formData.append("topic", topic);
+
+      // subject for the email notification
+      formData.append(
+        "_subject",
+        `Abstract submission (JIF 2026) — ${presentationType.toUpperCase()} — ${topic}`
+      );
+
+      // Attach file (name can be anything; "attachment" is a common convention)
+      formData.append("attachment", file);
 
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
+        body: formData,
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(payload),
       });
 
       if (!res.ok) throw new Error("Formspree request failed");
 
       setStatus("sent");
-      // Opcional: limpiar campos
-      // setFirstName(""); setLastName(""); setContactEmail(""); setPresentationType(""); setTopic("");
+      // Optional: reset
+      // setFirstName(""); setLastName(""); setContactEmail(""); setPresentationType(""); setTopic(""); setFile(null);
     } catch (err) {
       setStatus("error");
-      setErrorMsg("Could not send. Please try again or contact the Secretariat by email.");
+      setErrorMsg("Could not send. Please try again.");
     }
   }
 
@@ -119,7 +147,7 @@ const AbstractSubmission: React.FC = () => {
                   <li className="flex gap-3">
                     <span className="mt-1.5 h-2 w-2 rounded-full bg-slate-900 shrink-0" />
                     <span>
-                      <strong>Abstracts submission is processed through this website form.</strong>
+                      <strong>Abstract submission is only allowed via this website form.</strong>
                     </span>
                   </li>
 
@@ -133,15 +161,8 @@ const AbstractSubmission: React.FC = () => {
                         download
                       >
                         (download template)
-                      </a>{" "}
-                      and any questions can be sent to{" "}
-                      <a
-                        href={`mailto:${EMAIL}`}
-                        className="font-black text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-900 transition"
-                      >
-                        {EMAIL}
                       </a>
-                      .
+                      . Fill it in, attach the file below and submit it through this form.
                     </span>
                   </li>
 
@@ -156,7 +177,14 @@ const AbstractSubmission: React.FC = () => {
                     <span className="mt-1.5 h-2 w-2 rounded-full bg-slate-900 shrink-0" />
                     <span>
                       When the Technical Secretariat receives the abstract submission, you’ll receive an email confirming
-                      that we have received your abstract. If you don’t receive it, please contact the Technical Secretariat.
+                      that we have received your abstract. If you don’t receive it, please contact the Technical Secretariat at{" "}
+                      <a
+                        href={`mailto:${EMAIL}`}
+                        className="font-black text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-900 transition"
+                      >
+                        {EMAIL}
+                      </a>
+                      .
                     </span>
                   </li>
 
@@ -208,7 +236,7 @@ const AbstractSubmission: React.FC = () => {
                   Abstract submission form
                 </h2>
                 <p className="mt-3 text-slate-600 leading-relaxed">
-                  Fill in the details below. The Technical Secretariat will receive your submission by email.
+                  Download the template, fill it in and upload the completed file here.
                 </p>
               </div>
 
@@ -313,6 +341,23 @@ const AbstractSubmission: React.FC = () => {
                           ))}
                         </select>
                       </div>
+
+                      <div className="sm:col-span-2">
+                        <label className="block text-[11px] font-black uppercase tracking-[0.28em] text-slate-500">
+                          Abstract file (DOC/DOCX)
+                        </label>
+                        <input
+                          type="file"
+                          name="attachment"
+                          accept=".doc,.docx"
+                          required
+                          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+                          className="mt-2 w-full rounded-xl border border-slate-200 bg-white p-3 font-medium text-slate-800 outline-none focus:ring-2 focus:ring-slate-900/20 file:mr-4 file:rounded-lg file:border-0 file:bg-slate-900 file:px-4 file:py-2 file:text-white file:font-bold hover:file:bg-slate-800"
+                        />
+                        <p className="mt-2 text-xs text-slate-500">
+                          Please upload only .doc or .docx (max size depends on the platform limits).
+                        </p>
+                      </div>
                     </div>
 
                     <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -323,31 +368,17 @@ const AbstractSubmission: React.FC = () => {
                       >
                         {status === "sending" ? "Sending…" : "Send"}
                       </button>
-
-                      <a
-                        href={`mailto:${EMAIL}?subject=${encodeURIComponent("Abstract submission (JIF 2026)")}`}
-                        className="inline-flex justify-center items-center px-8 py-4 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
-                      >
-                        Email Technical Secretariat
-                      </a>
                     </div>
 
                     {status === "sent" && (
                       <p className="mt-6 text-xs text-slate-600 leading-relaxed">
-                        Submission sent. If you don’t receive a reply, contact <strong>{EMAIL}</strong>.
+                        Submission sent. If you don’t receive confirmation, contact <strong>{EMAIL}</strong>.
                       </p>
                     )}
 
                     {status === "error" && (
-                      <p className="mt-6 text-xs text-red-600 leading-relaxed">
-                        {errorMsg}
-                      </p>
+                      <p className="mt-6 text-xs text-red-600 leading-relaxed">{errorMsg}</p>
                     )}
-
-                    <p className="mt-6 text-xs text-slate-500 leading-relaxed">
-                      Note: this form sends your submission details by email to the Technical Secretariat. The abstract document
-                      must follow the official template.
-                    </p>
                   </form>
                 </div>
               </div>
@@ -367,7 +398,7 @@ const AbstractSubmission: React.FC = () => {
                 </h3>
 
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed">
-                  Use the official DOCX template and send the completed file to the Technical Secretariat.
+                  Use the official DOCX template, fill it in and upload it via the form.
                 </p>
 
                 <div className="mt-6 space-y-3">
@@ -377,13 +408,6 @@ const AbstractSubmission: React.FC = () => {
                     className="block w-full text-center px-8 py-4 rounded-2xl bg-fuchsia-600 text-white font-black text-[11px] uppercase tracking-[0.22em] shadow-xl hover:bg-fuchsia-500 transition"
                   >
                     Download Template (.docx)
-                  </a>
-
-                  <a
-                    href={`mailto:${EMAIL}?subject=${encodeURIComponent("Abstract submission (JIF 2026)")}`}
-                    className="block w-full text-center px-8 py-4 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
-                  >
-                    Email Technical Secretariat
                   </a>
                 </div>
 
