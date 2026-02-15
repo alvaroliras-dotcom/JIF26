@@ -2,15 +2,11 @@ import Busboy from "busboy";
 import nodemailer from "nodemailer";
 
 export const config = {
-  api: {
-    bodyParser: false,
-  },
+  api: { bodyParser: false },
 };
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).send("Method Not Allowed");
-  }
+  if (req.method !== "POST") return res.status(405).send("Method Not Allowed");
 
   const bb = Busboy({ headers: req.headers });
 
@@ -37,19 +33,18 @@ export default async function handler(req, res) {
 
   bb.on("finish", async () => {
     try {
-      const { firstName, lastName, email, presentationType, topic } = fields;
+      const { firstName, lastName, email, presentationType, topic, _next } = fields;
 
       if (!firstName || !lastName || !email || !presentationType || !topic) {
-        return res.status(400).json({ error: "Missing fields" });
+        return res.status(400).send("Missing fields");
       }
-
       if (!fileBuffer || !fileName) {
-        return res.status(400).json({ error: "Missing file" });
+        return res.status(400).send("Missing file");
       }
 
       const lower = fileName.toLowerCase();
       if (!lower.endsWith(".doc") && !lower.endsWith(".docx")) {
-        return res.status(400).json({ error: "Invalid file type" });
+        return res.status(400).send("Invalid file type");
       }
 
       const transporter = nodemailer.createTransport({
@@ -61,7 +56,6 @@ export default async function handler(req, res) {
       });
 
       const subject = `Abstract submission (JIF 2026) — ${presentationType} — ${topic}`;
-
       const text =
         `New abstract submission\n\n` +
         `First name: ${firstName}\n` +
@@ -85,13 +79,19 @@ export default async function handler(req, res) {
         ],
       });
 
+      // ✅ Redirect back to your page if _next is present
+      if (_next) {
+        res.writeHead(303, { Location: _next });
+        return res.end();
+      }
+
+      // Fallback
       return res.status(200).json({ ok: true });
     } catch (err) {
       console.error(err);
-      return res.status(500).json({ error: "Email send failed" });
+      return res.status(500).send("Email send failed");
     }
   });
 
   req.pipe(bb);
 }
-
