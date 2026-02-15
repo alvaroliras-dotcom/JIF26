@@ -25,7 +25,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       needInvoiceForBankTransfer,
       invoice,
       ticket,
-    } = data;
+    } = data as any;
 
     // Required fields
     if (
@@ -51,11 +51,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
     });
 
-    // Destination email (Registration)
-    const toEmail = process.env.MAIL_TO_REGISTRATION;
+    // Destination email (reuse existing env var)
+    const toEmail = process.env.MAIL_TO;
 
     if (!toEmail) {
-      return res.status(500).json({ error: "MAIL_TO_REGISTRATION is not set" });
+      return res.status(500).json({ error: "MAIL_TO is not set" });
     }
 
     const subject = `REGISTRATION (JIF 2026) — ${ticket.category} — ${ticket.membership} — ${ticket.feePeriod}`;
