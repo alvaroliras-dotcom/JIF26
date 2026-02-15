@@ -31,36 +31,36 @@ const App: React.FC = () => {
         <main className="flex-grow pt-20">
           <Routes>
             <Route path="/" element={<Home />} />
-            
+
             {/* Venue */}
             <Route path="/venue/location" element={<Venue />} />
             <Route path="/venue/how-to-get" element={<HowToGet />} />
             <Route path="/venue/tourist-info" element={<TouristInfo />} />
-            
+
             {/* Committees */}
             <Route path="/committees/international" element={<InternationalCommittee />} />
             <Route path="/committees/scientific" element={<ScientificCommittee />} />
             <Route path="/committees/local" element={<LocalCommittee />} />
-            
+
             {/* Speakers */}
             <Route path="/speakers/plenary" element={<PlenarySpeakers />} />
             <Route path="/speakers/invited" element={<InvitedSpeakers />} />
             <Route path="/speakers/phd-prize" element={<PhDPrize />} />
-            
+
             {/* Program */}
             <Route path="/program/overview" element={<ProgramOverview />} />
             <Route path="/program/full" element={<FullProgram />} />
-            
+
             {/* Abstracts */}
             <Route path="/abstracts/book" element={<AbstractBook />} />
             <Route path="/abstracts/submission" element={<AbstractSubmission />} />
             <Route path="/abstracts/presentations" element={<Presentations />} />
-            
+
             {/* Registration */}
             <Route path="/registration/fees" element={<RegistrationFees />} />
             <Route path="/registration/accommodation" element={<Accommodation />} />
             <Route path="/registration/form" element={<RegistrationForm />} />
-            
+
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
