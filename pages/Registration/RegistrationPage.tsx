@@ -24,10 +24,15 @@ const RegistrationPage: React.FC = () => {
   const [affiliation, setAffiliation] = useState("");
   const [accompanyingNames, setAccompanyingNames] = useState("");
 
-  const [needSeparateInvoiceForAccompanying, setNeedSeparateInvoiceForAccompanying] =
-    useState<boolean>(false);
+  const [
+    needSeparateInvoiceForAccompanying,
+    setNeedSeparateInvoiceForAccompanying,
+  ] = useState<boolean>(false);
+
   const [needInvoiceForBankTransfer, setNeedInvoiceForBankTransfer] =
     useState<boolean>(false);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // VAT invoice data
   const [instName, setInstName] = useState("");
@@ -73,7 +78,7 @@ const RegistrationPage: React.FC = () => {
     membership.trim() &&
     feePeriod.trim();
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!requiredOk) {
@@ -86,8 +91,56 @@ const RegistrationPage: React.FC = () => {
       return;
     }
 
-    // TODO: aquí luego conectamos con tu endpoint real.
-    alert("Formulario OK (frontend). Subtotal: " + formatEUR(subtotalEUR));
+    const payload = {
+      salutation,
+      firstName,
+      infix,
+      lastName,
+      country,
+      city,
+      phone,
+      email,
+      foodOptions,
+      affiliation,
+      accompanyingNames,
+      needSeparateInvoiceForAccompanying,
+      needInvoiceForBankTransfer,
+      invoice: {
+        instName,
+        street,
+        houseNumber,
+        postalCode,
+        instCity,
+        vatId,
+      },
+      ticket: {
+        category,
+        membership, // non_member | grufo_member
+        feePeriod, // before_june_30 | after_june_30
+        subtotalEUR,
+      },
+    };
+
+    try {
+      setIsSubmitting(true);
+
+      const res = await fetch("/api/registration", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const msg = await res.json().catch(() => ({}));
+        throw new Error(msg?.error || "Request failed");
+      }
+
+      alert("Enviado ✅ Revisa tu Gmail.");
+    } catch (err: any) {
+      alert(`Error enviando el correo: ${err?.message || "Unknown error"}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,7 +156,9 @@ const RegistrationPage: React.FC = () => {
             <h2 className="text-lg font-semibold">Personal registration data</h2>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Salutation</label>
+              <label className="block text-sm font-medium mb-1">
+                Salutation
+              </label>
               <select
                 className="w-full border rounded-full px-4 py-2"
                 value={salutation}
@@ -165,7 +220,9 @@ const RegistrationPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">City *</label>
+                <label className="block text-sm font-medium mb-1">
+                  City *
+                </label>
                 <input
                   className="w-full border rounded-full px-4 py-2"
                   placeholder="City of residence"
@@ -188,7 +245,9 @@ const RegistrationPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Email *</label>
+                <label className="block text-sm font-medium mb-1">
+                  Email *
+                </label>
                 <input
                   className="w-full border rounded-full px-4 py-2"
                   type="email"
@@ -236,13 +295,16 @@ const RegistrationPage: React.FC = () => {
             <div className="space-y-4 text-sm">
               <div>
                 <div className="font-medium mb-2">
-                  Please send me the separate invoice for the accompanying person(s)
+                  Please send me the separate invoice for the accompanying
+                  person(s)
                 </div>
                 <label className="mr-4">
                   <input
                     type="radio"
                     checked={needSeparateInvoiceForAccompanying === true}
-                    onChange={() => setNeedSeparateInvoiceForAccompanying(true)}
+                    onChange={() =>
+                      setNeedSeparateInvoiceForAccompanying(true)
+                    }
                   />{" "}
                   Yes
                 </label>
@@ -250,7 +312,9 @@ const RegistrationPage: React.FC = () => {
                   <input
                     type="radio"
                     checked={needSeparateInvoiceForAccompanying === false}
-                    onChange={() => setNeedSeparateInvoiceForAccompanying(false)}
+                    onChange={() =>
+                      setNeedSeparateInvoiceForAccompanying(false)
+                    }
                   />{" "}
                   No
                 </label>
@@ -343,7 +407,8 @@ const RegistrationPage: React.FC = () => {
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                Institution's VAT or other similar tax number (VIES-VAT No. for EU)
+                Institution's VAT or other similar tax number (VIES-VAT No. for
+                EU)
               </label>
               <input
                 className="w-full border rounded-full px-4 py-2"
@@ -353,8 +418,8 @@ const RegistrationPage: React.FC = () => {
             </div>
 
             <p className="text-xs text-gray-600">
-              The VAT invoice will be issued within 48 h upon the receipt of payment
-              or official purchase order by the institution.
+              The VAT invoice will be issued within 48 h upon the receipt of
+              payment or official purchase order by the institution.
             </p>
           </section>
 
@@ -415,7 +480,8 @@ const RegistrationPage: React.FC = () => {
             </div>
 
             <p className="text-xs text-gray-600">
-              Prices are calculated automatically based on Category, Membership and Fee period.
+              Prices are calculated automatically based on Category, Membership
+              and Fee period.
             </p>
           </section>
 
@@ -423,9 +489,9 @@ const RegistrationPage: React.FC = () => {
             <button
               type="submit"
               className="px-6 py-2 rounded-full bg-green-600 text-white disabled:opacity-50"
-              disabled={!requiredOk}
+              disabled={!requiredOk || isSubmitting}
             >
-              Submit
+              {isSubmitting ? "Sending..." : "Submit"}
             </button>
           </div>
         </form>
