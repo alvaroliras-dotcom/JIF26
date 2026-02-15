@@ -121,7 +121,7 @@ const InvitedSpeakers: React.FC = () => {
       title: "Full Professor",
       topic:
         "Luminescent hybrid materials, photonic sensors, spectral converters for photovoltaics, smart optical tags for IoT, and AI-assisted photonic device design.",
-      photo: "/assets/ponentes/rute-ferreira.jpg",
+      photo: "/assets/ponentes/maria-rute-ferreira.jpg",
     },
     {
       name: "Paulo Coelho",
