@@ -8,7 +8,7 @@ const formatEUR = (n: number) =>
   }).format(n);
 
 type Category = "" | "senior" | "student";
-type Membership = "" | "non_member" | "group_member";
+type Membership = "" | "non_member" | "grufo_member";
 type FeePeriod = "" | "before_june_30" | "after_june_30";
 
 const RegistrationPage: React.FC = () => {
@@ -45,26 +45,18 @@ const RegistrationPage: React.FC = () => {
   const subtotalEUR = useMemo(() => {
     if (!category || !membership || !feePeriod) return 0;
 
+    const isGrufo = membership === "grufo_member";
+
     // BEFORE JUNE 30TH, 2026
     if (feePeriod === "before_june_30") {
-      if (category === "senior") {
-        return membership === "group_member" ? 400 : 480;
-      }
-
-      if (category === "student") {
-        return membership === "group_member" ? 200 : 280;
-      }
+      if (category === "senior") return isGrufo ? 400 : 480;
+      if (category === "student") return isGrufo ? 200 : 280;
     }
 
     // AFTER JUNE 30TH, 2026
     if (feePeriod === "after_june_30") {
-      if (category === "senior") {
-        return membership === "group_member" ? 480 : 550;
-      }
-
-      if (category === "student") {
-        return membership === "group_member" ? 280 : 350;
-      }
+      if (category === "senior") return isGrufo ? 480 : 550;
+      if (category === "student") return isGrufo ? 280 : 350;
     }
 
     return 0;
@@ -397,7 +389,7 @@ const RegistrationPage: React.FC = () => {
                 >
                   <option value="">— Select —</option>
                   <option value="non_member">Non-member</option>
-                  <option value="group_member">Group member</option>
+                  <option value="grufo_member">GRUFO member</option>
                 </select>
               </div>
             </div>
