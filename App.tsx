@@ -21,6 +21,7 @@ import AbstractSubmission from './pages/Abstracts/AbstractSubmission';
 import Presentations from './pages/Abstracts/Presentations';
 import RegistrationFees from './pages/Registration/RegistrationFees';
 import Accommodation from './pages/Registration/Accommodation';
+import RegistrationPage from './pages/Registration/RegistrationPage';
 
 const App: React.FC = () => {
   return (
@@ -58,6 +59,7 @@ const App: React.FC = () => {
             {/* Registration */}
             <Route path="/registration/fees" element={<RegistrationFees />} />
             <Route path="/registration/accommodation" element={<Accommodation />} />
+            <Route path="/registration/page" element={<RegistrationPage />} />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

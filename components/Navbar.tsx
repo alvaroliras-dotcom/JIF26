@@ -99,6 +99,7 @@ const Navbar: React.FC = () => {
                 <NavContainer title="Registration">
                   <SubNavItem to="/registration/fees" label="Registration Fees" />
                   <SubNavItem to="/registration/accommodation" label="Accommodation" />
+                  <SubNavItem to="/registration/page" label="Registration Page" />
                 </NavContainer>
               </div>
 
@@ -165,6 +166,9 @@ const Navbar: React.FC = () => {
                   </Link>
                   <Link to="/registration/fees" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
                     Registration Fees
+                  </Link>
+                  <Link to="/registration/page" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
+                    Registration Page
                   </Link>
                 </div>
               </div>
