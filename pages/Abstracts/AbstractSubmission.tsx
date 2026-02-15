@@ -4,11 +4,11 @@ const AbstractSubmission: React.FC = () => {
   const TEMPLATE_URL = "/assets/downloads/IXJIF-Abstract-Template.docx";
   const EMAIL = "jif2026.segovia@gmail.com";
 
-  // Formspree endpoint
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjgewkqk";
+  // IMPORTANT: send to your Vercel API route
+  const API_ENDPOINT = "/api/abstracts";
 
-  // Redirect back to this SPA route after submit:
-  // Put the query BEFORE the hash so the SPA can read it.
+  // Redirect back to this page after submit
+  // NOTE: query must go BEFORE the hash for SPA routing
   const NEXT_URL = "https://jif-26.vercel.app/?submitted=1#/abstracts/submission";
 
   const TOPICS = [
@@ -77,9 +77,7 @@ const AbstractSubmission: React.FC = () => {
                 <ul className="mt-4 space-y-3 text-sm text-slate-700 leading-relaxed">
                   <li className="flex gap-3">
                     <span className="mt-1.5 h-2 w-2 rounded-full bg-slate-900 shrink-0" />
-                    <span>
-                      <strong>Abstract submission is only allowed via this website form.</strong>
-                    </span>
+                    <span><strong>Abstract submission is only allowed via this website form.</strong></span>
                   </li>
 
                   <li className="flex gap-3">
@@ -174,14 +172,7 @@ const AbstractSubmission: React.FC = () => {
               <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
                 <div className="h-[3px] w-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
                 <div className="p-8">
-                  <form
-                    action={FORMSPREE_ENDPOINT}
-                    method="POST"
-                    encType="multipart/form-data"
-                  >
-                    {/* Email subject */}
-                    <input type="hidden" name="_subject" value="Abstract submission (JIF 2026)" />
-                    {/* Redirect back to your site after submit */}
+                  <form action={API_ENDPOINT} method="POST" encType="multipart/form-data">
                     <input type="hidden" name="_next" value={NEXT_URL} />
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
