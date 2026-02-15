@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -22,6 +21,7 @@ import AbstractSubmission from './pages/Abstracts/AbstractSubmission';
 import Presentations from './pages/Abstracts/Presentations';
 import RegistrationFees from './pages/Registration/RegistrationFees';
 import Accommodation from './pages/Registration/Accommodation';
+import RegistrationForm from './pages/Registration/RegistrationForm';
 
 const App: React.FC = () => {
   return (
@@ -59,6 +59,7 @@ const App: React.FC = () => {
             {/* Registration */}
             <Route path="/registration/fees" element={<RegistrationFees />} />
             <Route path="/registration/accommodation" element={<Accommodation />} />
+            <Route path="/registration/form" element={<RegistrationForm />} />
             
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
