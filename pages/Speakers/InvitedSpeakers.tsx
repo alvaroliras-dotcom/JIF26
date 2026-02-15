@@ -39,7 +39,7 @@ const InvitedSpeakers: React.FC = () => {
       title: "Associate Professor",
       topic:
         "Photophysical properties. Coordination Chemistry. Group 11 metals, Hearth abundant metals and Carboranes Chemistry.",
-      photo: "/assets/ponentes/olga-crespo-zaragoza.jpg",
+      photo: "/assets/ponentes/olga-crespo.jpg",
     },
     {
       name: "Carla Casadevall Serrano",
