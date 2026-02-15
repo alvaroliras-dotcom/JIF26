@@ -94,7 +94,7 @@ const RegistrationPage: React.FC = () => {
     <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="rounded-xl overflow-hidden border bg-white">
         <div className="bg-blue-600 text-white px-6 py-4 font-semibold">
-          PhotoIUPAC 2026
+          IX JIF 2026
         </div>
 
         <form onSubmit={onSubmit} className="p-6 space-y-10">
