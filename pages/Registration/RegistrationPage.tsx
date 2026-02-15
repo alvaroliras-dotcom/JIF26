@@ -1,83 +1,15 @@
 import React, { useMemo, useState } from "react";
 
-type TicketKey =
-  | "student_early"
-  | "student_early_epa"
-  | "senior_academia_early"
-  | "senior_academia_early_epa"
-  | "senior_industry_early"
-  | "senior_industry_early_epa"
-  | "accompanying_person"
-  | "conference_dinner";
-
-type Ticket = {
-  key: TicketKey;
-  title: string;
-  description?: string;
-  priceEUR: number;
-};
-
-const TICKETS: Ticket[] = [
-  {
-    key: "student_early",
-    title: "Students - early bird fee",
-    description:
-      "Fee for students (not including postdocs) valid for registrations made until March 31, 2026.",
-    priceEUR: 450,
-  },
-  {
-    key: "student_early_epa",
-    title: "Students - early bird fee for EPA members",
-    description:
-      "Fee for students (not including postdocs) valid for EPA members for registrations made until March 31, 2026.",
-    priceEUR: 430,
-  },
-  {
-    key: "senior_academia_early",
-    title: "Senior scientist from academia - early bird",
-    description:
-      "Fee for senior scientist from academia valid for registrations made until March 31, 2026.",
-    priceEUR: 700,
-  },
-  {
-    key: "senior_academia_early_epa",
-    title: "Senior scientist from academia - early bird for EPA members",
-    description:
-      "Fee for senior scientist from academia valid for EPA members for registrations made until March 31, 2026.",
-    priceEUR: 660,
-  },
-  {
-    key: "senior_industry_early",
-    title: "Senior scientist from industry - early bird",
-    description:
-      "Fee for senior scientist from industry valid for registrations made until March 31, 2026.",
-    priceEUR: 850,
-  },
-  {
-    key: "senior_industry_early_epa",
-    title: "Senior scientist from industry - early bird for EPA members",
-    description:
-      "Fee for senior scientist from industry valid for EPA members for registrations made until March 31, 2026.",
-    priceEUR: 810,
-  },
-  {
-    key: "accompanying_person",
-    title: "Accompanying person",
-    priceEUR: 250,
-  },
-  {
-    key: "conference_dinner",
-    title: "Conference Dinner",
-    priceEUR: 80,
-  },
-];
-
 const formatEUR = (n: number) =>
   new Intl.NumberFormat("es-ES", {
     style: "currency",
     currency: "EUR",
     minimumFractionDigits: 2,
   }).format(n);
+
+type Category = "" | "senior" | "student";
+type Membership = "" | "non_member" | "group_member";
+type FeePeriod = "" | "before_june_30" | "after_june_30";
 
 const RegistrationPage: React.FC = () => {
   const [salutation, setSalutation] = useState("");
@@ -105,20 +37,38 @@ const RegistrationPage: React.FC = () => {
   const [instCity, setInstCity] = useState("");
   const [vatId, setVatId] = useState("");
 
-  const [qty, setQty] = useState<Record<TicketKey, number>>({
-    student_early: 0,
-    student_early_epa: 0,
-    senior_academia_early: 0,
-    senior_academia_early_epa: 0,
-    senior_industry_early: 0,
-    senior_industry_early_epa: 0,
-    accompanying_person: 0,
-    conference_dinner: 0,
-  });
+  // Ticket logic (REAL pricing table)
+  const [category, setCategory] = useState<Category>("");
+  const [membership, setMembership] = useState<Membership>("");
+  const [feePeriod, setFeePeriod] = useState<FeePeriod>("");
 
   const subtotalEUR = useMemo(() => {
-    return TICKETS.reduce((sum, t) => sum + (qty[t.key] || 0) * t.priceEUR, 0);
-  }, [qty]);
+    if (!category || !membership || !feePeriod) return 0;
+
+    // BEFORE JUNE 30TH, 2026
+    if (feePeriod === "before_june_30") {
+      if (category === "senior") {
+        return membership === "group_member" ? 400 : 480;
+      }
+
+      if (category === "student") {
+        return membership === "group_member" ? 200 : 280;
+      }
+    }
+
+    // AFTER JUNE 30TH, 2026
+    if (feePeriod === "after_june_30") {
+      if (category === "senior") {
+        return membership === "group_member" ? 480 : 550;
+      }
+
+      if (category === "student") {
+        return membership === "group_member" ? 280 : 350;
+      }
+    }
+
+    return 0;
+  }, [category, membership, feePeriod]);
 
   const requiredOk =
     firstName.trim() &&
@@ -126,14 +76,10 @@ const RegistrationPage: React.FC = () => {
     country.trim() &&
     city.trim() &&
     email.trim() &&
-    affiliation.trim();
-
-  const changeQty = (key: TicketKey, delta: number) => {
-    setQty((prev) => {
-      const next = Math.max(0, (prev[key] || 0) + delta);
-      return { ...prev, [key]: next };
-    });
-  };
+    affiliation.trim() &&
+    category.trim() &&
+    membership.trim() &&
+    feePeriod.trim();
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -142,13 +88,13 @@ const RegistrationPage: React.FC = () => {
       alert("Faltan campos obligatorios (marcados con *).");
       return;
     }
+
     if (subtotalEUR <= 0) {
-      alert("Selecciona al menos un ticket.");
+      alert("Selecciona un ticket válido.");
       return;
     }
 
-    // TODO: aquí luego conectamos con tu endpoint real (cuando lo definamos).
-    // De momento, no tocamos backend.
+    // TODO: aquí luego conectamos con tu endpoint real.
     alert("Formulario OK (frontend). Subtotal: " + formatEUR(subtotalEUR));
   };
 
@@ -191,6 +137,7 @@ const RegistrationPage: React.FC = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
+
               <div>
                 <label className="block text-sm font-medium mb-1">Infix</label>
                 <input
@@ -199,6 +146,7 @@ const RegistrationPage: React.FC = () => {
                   onChange={(e) => setInfix(e.target.value)}
                 />
               </div>
+
               <div>
                 <label className="block text-sm font-medium mb-1">
                   Last name *
@@ -223,6 +171,7 @@ const RegistrationPage: React.FC = () => {
                   onChange={(e) => setCountry(e.target.value)}
                 />
               </div>
+
               <div>
                 <label className="block text-sm font-medium mb-1">City *</label>
                 <input
@@ -245,6 +194,7 @@ const RegistrationPage: React.FC = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
+
               <div>
                 <label className="block text-sm font-medium mb-1">Email *</label>
                 <input
@@ -364,6 +314,7 @@ const RegistrationPage: React.FC = () => {
                   onChange={(e) => setStreet(e.target.value)}
                 />
               </div>
+
               <div>
                 <label className="block text-sm font-medium mb-1">
                   Housenumber
@@ -387,6 +338,7 @@ const RegistrationPage: React.FC = () => {
                   onChange={(e) => setPostalCode(e.target.value)}
                 />
               </div>
+
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-1">City</label>
                 <input
@@ -418,52 +370,61 @@ const RegistrationPage: React.FC = () => {
           <section className="space-y-4">
             <h2 className="text-lg font-semibold">Select your Ticket</h2>
 
-            <div className="space-y-3">
-              {TICKETS.map((t) => (
-                <div
-                  key={t.key}
-                  className="border rounded-xl p-4 flex items-start justify-between gap-4"
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Category *
+                </label>
+                <select
+                  className="w-full border rounded-full px-4 py-2"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value as Category)}
                 >
-                  <div>
-                    <div className="font-semibold">{t.title}</div>
-                    {t.description ? (
-                      <div className="text-xs text-gray-600 mt-1">{t.description}</div>
-                    ) : null}
-                    <div className="mt-2 text-sm font-semibold">
-                      {formatEUR(t.priceEUR)}{" "}
-                      <span className="text-xs text-gray-500 font-normal">
-                        incl. VAT
-                      </span>
-                    </div>
-                  </div>
+                  <option value="">— Select —</option>
+                  <option value="senior">Senior researcher</option>
+                  <option value="student">Student</option>
+                </select>
+              </div>
 
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      className="w-8 h-8 rounded-full border"
-                      onClick={() => changeQty(t.key, -1)}
-                      aria-label={`Decrease ${t.title}`}
-                    >
-                      -
-                    </button>
-                    <div className="w-8 text-center">{qty[t.key] || 0}</div>
-                    <button
-                      type="button"
-                      className="w-8 h-8 rounded-full border"
-                      onClick={() => changeQty(t.key, +1)}
-                      aria-label={`Increase ${t.title}`}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              ))}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Membership *
+                </label>
+                <select
+                  className="w-full border rounded-full px-4 py-2"
+                  value={membership}
+                  onChange={(e) => setMembership(e.target.value as Membership)}
+                >
+                  <option value="">— Select —</option>
+                  <option value="non_member">Non-member</option>
+                  <option value="group_member">Group member</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Fee period *
+              </label>
+              <select
+                className="w-full border rounded-full px-4 py-2"
+                value={feePeriod}
+                onChange={(e) => setFeePeriod(e.target.value as FeePeriod)}
+              >
+                <option value="">— Select —</option>
+                <option value="before_june_30">Before June 30th, 2026</option>
+                <option value="after_june_30">After June 30th, 2026</option>
+              </select>
             </div>
 
             <div className="border rounded-xl p-4 bg-gray-50 flex items-center justify-between">
               <div className="font-semibold">Order summary</div>
               <div className="font-semibold">{formatEUR(subtotalEUR)}</div>
             </div>
+
+            <p className="text-xs text-gray-600">
+              Prices are calculated automatically based on Category, Membership and Fee period.
+            </p>
           </section>
 
           <div className="flex items-center justify-end">
