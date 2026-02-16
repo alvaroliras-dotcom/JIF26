@@ -27,7 +27,7 @@ const InternationalCommittee: React.FC = () => {
       name: "João C. Lima",
       affiliation: "Universidade NOVA de Lisboa",
       // En el Word no viene cargo: dejamos placeholder
-      title: PLACEHOLDER_TITLE,
+      title: "Full Professor",
       photo: "/assets/ponentes/joao-c-lima.jpg",
     },
     {
@@ -40,7 +40,7 @@ const InternationalCommittee: React.FC = () => {
       name: "Olivier Soppera",
       affiliation: "Université de Haute-Alsace / CNRS",
       // En el Word no viene cargo: dejamos placeholder
-      title: PLACEHOLDER_TITLE,
+      title: "CNRS Researcher Director",
       photo: "/assets/ponentes/ilivier-soppera.jpg",
     },
     {
