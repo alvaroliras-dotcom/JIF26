@@ -41,7 +41,7 @@ const Home: React.FC = () => {
                     II Franco-Iberian Conference on Photochemistry
                   </span>
                   <span className="block text-sm md:text-base font-black uppercase tracking-[0.28em] text-white/60 mt-6">
-                    (9’JIF) & (2’FICP)
+                    (IX JIF) & (II FICP)
                   </span>
                 </h1>
 
@@ -129,19 +129,19 @@ const Home: React.FC = () => {
 
           <div className="prose prose-xl text-slate-600 max-w-none space-y-8 leading-relaxed">
             <p className="font-bold text-slate-900 italic text-2xl">
-              Welcome to the IX Jornadas Ibéricas de Fotoquímica (9’JIF) & II
-              Franco-Iberian Conference on Photochemistry (2’FICP)
+              Welcome to the IX Jornadas Ibéricas de Fotoquímica (IX JIF) & II
+              Franco-Iberian Conference on Photochemistry (II FICP)
             </p>
 
             <p>
               The Grupo Especializado de Fotoquímica of the Real Sociedad Española
               de Química (GRUFO-RSEQ) and the Grupo de Fotoquímica of the Sociedade
               Portuguesa de Química (SPQ) cordially invite you to participate in
-              the Ninth Jornadas Ibéricas de Fotoquímica (9’JIF). To strengthen the
+              the Ninth Jornadas Ibéricas de Fotoquímica (IX JIF). To strengthen the
               cooperation with the Photochimie, Photophysique et Photosciences
               division (SP2P) of the Société Chimique de France (SCF), we are
               pleased to host the II Franco-Iberian Conference on Photochemistry
-              (2’FICP).
+              (II FICP).
             </p>
 
             <p>
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
 
             {/* ✅ FALTABA en tu HOME */}
             <p>
-              The 9’JIF meeting builds on the tradition of the previous ones
+              The IX JIF meeting builds on the tradition of the previous ones
               (Santiago de Compostela in 2003, Faro in 2007, Granada in 2011,
               Lisbon in 2014, Toledo in 2016, Aveiro in 2018, Alcalá de Henares
               in 2022 and Lisbon in 2024) to foster collaboration among Spanish,
