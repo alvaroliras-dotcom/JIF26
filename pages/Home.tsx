@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
@@ -88,18 +87,18 @@ const Home: React.FC = () => {
 
                 {/* CTAs */}
                 <div className="flex flex-wrap gap-4 pt-6">
-                  <Link
-                    to="/registration/fees"
+                  <a
+                    href="/#/registration/fees"
                     className="px-10 py-4 rounded-2xl bg-fuchsia-600 text-white font-black text-[11px] uppercase tracking-[0.22em] shadow-xl hover:bg-fuchsia-500 transition active:scale-[0.99]"
                   >
                     Register Now
-                  </Link>
-                  <Link
-                    to="/abstracts/submission"
+                  </a>
+                  <a
+                    href="/#/abstracts/submission"
                     className="px-10 py-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur text-white font-black text-[11px] uppercase tracking-[0.22em] hover:bg-white/10 hover:border-white/30 transition active:scale-[0.99]"
                   >
                     Submit Abstract
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -182,14 +181,14 @@ const Home: React.FC = () => {
               to contact us.
             </p>
 
-            {/* CTA suave a Contact (si existe ruta) */}
+            {/* ✅ Contact mailto */}
             <div className="pt-4">
-              <Link
-                to="/contact"
+              <a
+                href="mailto:jif2026.segovia@gmail.com"
                 className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
               >
                 Contact
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -295,12 +294,12 @@ const Home: React.FC = () => {
 
           {/* Mini-CTA opcional */}
           <div className="mt-12 text-center">
-            <Link
-              to="/abstracts/submission"
+            <a
+              href="/#/abstracts/submission"
               className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
             >
               Abstract Submission Details
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -402,9 +401,7 @@ const Home: React.FC = () => {
           <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-10"></div>
 
           <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-10">
-            <p className="text-slate-700 text-lg font-bold">
-              To be determined
-            </p>
+            <p className="text-slate-700 text-lg font-bold">To be determined</p>
           </div>
         </div>
       </section>
@@ -425,18 +422,18 @@ const Home: React.FC = () => {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/registration/fees"
+            <a
+              href="/#/registration/fees"
               className="px-10 py-4 rounded-2xl bg-fuchsia-600 text-white font-black text-[11px] uppercase tracking-[0.22em] shadow-xl hover:bg-fuchsia-500 transition active:scale-[0.99]"
             >
               Register Now
-            </Link>
-            <Link
-              to="/abstracts/submission"
+            </a>
+            <a
+              href="/#/abstracts/submission"
               className="px-10 py-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur text-white font-black text-[11px] uppercase tracking-[0.22em] hover:bg-white/10 hover:border-white/30 transition active:scale-[0.99]"
             >
               Submit Abstract
-            </Link>
+            </a>
           </div>
         </div>
       </section>
