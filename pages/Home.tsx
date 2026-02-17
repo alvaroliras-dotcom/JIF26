@@ -285,7 +285,7 @@ const Home: React.FC = () => {
                       Late Registration
                     </span>
                     <span className="font-black text-slate-900 text-base">
-                      1st September
+                      After June 30th
                     </span>
                   </div>
                 </div>
@@ -356,7 +356,7 @@ const Home: React.FC = () => {
                 title: "Welcome Reception",
                 subtitle: "September 2nd (evening/late afternoon)",
                 text:
-                  "A small welcome reception with drinks and snacks will be held at the Conference Venue on the evening/late afternoon of September 2nd.",
+                  "Welcome reception with drinks and snacks will be held at the Conference Venue on the evening/late afternoon of September 2nd.",
               },
               {
                 title: "Lunches",
@@ -368,7 +368,7 @@ const Home: React.FC = () => {
                 title: "Conference Dinner",
                 subtitle: "September 3rd (to be determined)",
                 text:
-                  "The registration fee includes the Conference Dinner. It will be held on September 3rd, to be determined.",
+                  "The registration fee includes the Conference Dinner. It will be held on September 3rd at Convento de Minimos",
               },
             ].map((item) => (
               <div
