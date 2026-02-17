@@ -176,11 +176,12 @@ const HowToGet: React.FC = () => {
       <div className="space-y-32">
         {/* FROM AIRPORT */}
         <section>
-          <div className="flex items-center gap-6 mb-12">
-            <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight shrink-0">
+          {/* FIX: allow wrapping + remove shrink-0 */}
+          <div className="flex flex-wrap items-center gap-4 mb-12 min-w-0">
+            <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight min-w-0 break-words">
               From Madrid-Barajas Airport (MAD)
             </h2>
-            <div className="h-px bg-slate-200 grow"></div>
+            <div className="h-px bg-slate-200 grow basis-24"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -267,11 +268,12 @@ const HowToGet: React.FC = () => {
 
         {/* FROM CITY CENTER */}
         <section>
-          <div className="flex items-center gap-6 mb-12">
-            <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight shrink-0">
+          {/* FIX: same header treatment */}
+          <div className="flex flex-wrap items-center gap-4 mb-12 min-w-0">
+            <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight min-w-0 break-words">
               From Madrid City Center
             </h2>
-            <div className="h-px bg-slate-200 grow"></div>
+            <div className="h-px bg-slate-200 grow basis-24"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
