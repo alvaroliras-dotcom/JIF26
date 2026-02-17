@@ -24,6 +24,11 @@ const RegistrationPage: React.FC = () => {
   const [affiliation, setAffiliation] = useState("");
   const [accompanyingNames, setAccompanyingNames] = useState("");
 
+  // NEW FIELD: Gala Dinner Attendance
+  const [galaDinnerAttendance, setGalaDinnerAttendance] = useState<
+    "" | "yes" | "no"
+  >("");
+
   const [
     needSeparateInvoiceForAccompanying,
     setNeedSeparateInvoiceForAccompanying,
@@ -100,6 +105,10 @@ const RegistrationPage: React.FC = () => {
       city,
       phone,
       email,
+
+      // NEW FIELD
+      galaDinnerAttendance,
+
       foodOptions,
       affiliation,
       accompanyingNames,
@@ -254,6 +263,35 @@ const RegistrationPage: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+              </div>
+            </div>
+
+            {/* NEW QUESTION: Gala Dinner Attendance */}
+            <div className="space-y-2 text-sm">
+              <div className="font-medium">
+                Conference Gala Dinner Attendance
+              </div>
+
+              <div className="flex items-center gap-6">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="galaDinnerAttendance"
+                    checked={galaDinnerAttendance === "yes"}
+                    onChange={() => setGalaDinnerAttendance("yes")}
+                  />
+                  YES
+                </label>
+
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="galaDinnerAttendance"
+                    checked={galaDinnerAttendance === "no"}
+                    onChange={() => setGalaDinnerAttendance("no")}
+                  />
+                  NO
+                </label>
               </div>
             </div>
 
