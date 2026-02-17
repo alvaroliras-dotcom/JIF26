@@ -184,11 +184,16 @@ const Home: React.FC = () => {
             {/* ✅ Contact mailto */}
             <div className="pt-4">
               <a
-                href="mailto:jif2026.segovia@gmail.com"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
-              >
-                Contact
-              </a>
+  href="mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact"
+  onClick={(e) => {
+    e.preventDefault();
+    window.location.href =
+      "mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact";
+  }}
+  className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
+>
+  Contact
+</a>
             </div>
           </div>
         </div>
