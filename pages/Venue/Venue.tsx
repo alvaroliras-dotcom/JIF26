@@ -23,7 +23,7 @@ const Venue: React.FC = () => {
           <div className="prose prose-xl text-slate-600 max-w-none leading-relaxed">
             <p>
               We are thrilled to announce that the IX Jornadas Ibéricas de
-              Fotoquímica (9’JIF) will take place at the{" "}
+              Fotoquímica (IX JIF) will take place at the{" "}
               <strong>Campus María Zambrano Segovia</strong>, one of the most
               innovative campuses in Spain and nestled in the heart of Segovia,
               a UNESCO World Heritage city.
