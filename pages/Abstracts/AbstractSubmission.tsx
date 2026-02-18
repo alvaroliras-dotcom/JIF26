@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 
 const AbstractSubmission: React.FC = () => {
+  // ✅ UPDATED: must match the real file name in /public/assets/downloads
   const TEMPLATE_URL = "/assets/downloads/Abstract_template_JIF2026.docx";
   const EMAIL = "jif2026.segovia@gmail.com";
 
