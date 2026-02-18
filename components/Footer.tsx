@@ -13,17 +13,38 @@ const Footer: React.FC = () => {
             </h4>
           </div>
 
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
+          {/* ✅ GRID RESPONSIVE: 2 filas cuando haya muchos logos */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-10 gap-y-10 items-center justify-items-center">
             <img
               src="/assets/logo-grufo.png"
               alt="GRUFO"
-              className="h-20 md:h-24 w-auto opacity-95 hover:opacity-100 transition-all duration-300"
+              className="h-16 sm:h-16 md:h-20 w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
               loading="lazy"
             />
             <img
               src="/assets/logo-rseq.png"
               alt="RSEQ"
-              className="h-14 md:h-16 w-auto opacity-95 hover:opacity-100 transition-all duration-300"
+              className="h-14 sm:h-16 md:h-18 w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
+              loading="lazy"
+            />
+
+            {/* ✅ nuevos logos */}
+            <img
+              src="/assets/logo-luzchen.png"
+              alt="Luzchen"
+              className="h-14 sm:h-16 md:h-18 w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
+              loading="lazy"
+            />
+            <img
+              src="/assets/logo-quima.png"
+              alt="Quima"
+              className="h-14 sm:h-16 md:h-18 w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
+              loading="lazy"
+            />
+            <img
+              src="/assets/logo-uv-consulting.png"
+              alt="UV Consulting"
+              className="h-14 sm:h-16 md:h-18 w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
               loading="lazy"
             />
           </div>
