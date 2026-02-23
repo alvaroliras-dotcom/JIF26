@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Cierra menú móvil al volver a desktop
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 1024) setIsOpen(false);
@@ -21,7 +20,6 @@ const Navbar: React.FC = () => {
           <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
         </svg>
       </div>
-
       <div className="hidden group-hover:block absolute left-0 top-full w-72 bg-white/95 backdrop-blur border border-slate-100 shadow-2xl z-50 rounded-2xl overflow-hidden py-2">
         {children}
       </div>
@@ -46,11 +44,9 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100]">
-      {/* Capa premium: blanco semitransparente + blur */}
       <div className="bg-white/85 backdrop-blur border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-24 flex justify-between items-center">
-            {/* Logo más grande */}
             <Link to="/" className="flex items-center gap-3">
               <img
                 src="/assets/logo-jif26-solo.png"
@@ -58,13 +54,12 @@ const Navbar: React.FC = () => {
                 className="h-14 lg:h-16 w-auto"
                 loading="eager"
               />
-              {/* Micro claim opcional (si no lo quieres, bórralo sin miedo) */}
               <span className="hidden xl:inline text-[11px] font-extrabold uppercase tracking-[0.22em] text-slate-500">
                 Segovia · Sep 2–4, 2026
               </span>
             </Link>
 
-            {/* Desktop Nav */}
+            {/* Desktop Nav (sin cambios) */}
             <div className="hidden lg:flex items-center">
               <div className="flex items-center">
                 <NavContainer title="Venue">
@@ -103,7 +98,6 @@ const Navbar: React.FC = () => {
                 </NavContainer>
               </div>
 
-              {/* CTA dominante (uno) */}
               <Link
                 to="/registration/fees"
                 className="ml-6 inline-flex items-center rounded-full bg-blue-600 px-7 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-white shadow-lg hover:bg-blue-700 transition active:scale-[0.99]"
@@ -131,7 +125,6 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Línea espectral (leitmotiv controlado) */}
         <div className="h-[3px] w-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
       </div>
 
@@ -140,64 +133,45 @@ const Navbar: React.FC = () => {
         <div className="lg:hidden bg-white border-b border-slate-100 shadow-2xl">
           <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
             <div className="grid grid-cols-1 gap-8">
-              {/* Venue */}
+
               <div>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.22em] mb-4">Venue</p>
                 <div className="space-y-3">
-                  <Link
-                    to="/venue/how-to-get"
-                    className="block text-slate-900 font-extrabold"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link to="/venue/how-to-get" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
                     How to get to Segovia
+                  </Link>
+                  <Link to="/venue/tourist-info" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
+                    Tourist Information
                   </Link>
                 </div>
               </div>
 
-              {/* Committees */}
               <div>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.22em] mb-4">Committees</p>
                 <div className="space-y-3">
-                  <Link
-                    to="/committees/international"
-                    className="block text-slate-900 font-extrabold"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link to="/committees/international" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
                     International Committee
                   </Link>
-                  <Link
-                    to="/committees/scientific"
-                    className="block text-slate-900 font-extrabold"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link to="/committees/scientific" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
                     Scientific Committee
                   </Link>
                 </div>
               </div>
 
-              {/* Speakers */}
               <div>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.22em] mb-4">Speakers</p>
                 <div className="space-y-3">
-                  <Link
-                    to="/speakers/plenary"
-                    className="block text-slate-900 font-extrabold"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link to="/speakers/plenary" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
                     Plenary Speakers
                   </Link>
-                  <Link
-                    to="/speakers/invited"
-                    className="block text-slate-900 font-extrabold"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link to="/speakers/invited" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
                     Invited Speakers
                   </Link>
                 </div>
               </div>
+
             </div>
 
-            {/* CTA */}
             <Link
               to="/registration/fees"
               className="block w-full rounded-2xl bg-blue-600 text-white font-black px-4 py-4 text-center uppercase tracking-[0.2em] text-[11px] hover:bg-blue-700 transition"
