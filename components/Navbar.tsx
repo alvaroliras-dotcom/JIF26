@@ -140,46 +140,70 @@ const Navbar: React.FC = () => {
         <div className="lg:hidden bg-white border-b border-slate-100 shadow-2xl">
           <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
             <div className="grid grid-cols-1 gap-8">
+              {/* Venue */}
               <div>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.22em] mb-4">Venue</p>
                 <div className="space-y-3">
-                  <Link to="/venue/location" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
-                    Venue Location
-                  </Link>
-                  <Link to="/venue/how-to-get" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
+                  <Link
+                    to="/venue/how-to-get"
+                    className="block text-slate-900 font-extrabold"
+                    onClick={() => setIsOpen(false)}
+                  >
                     How to get to Segovia
-                  </Link>
-                  <Link to="/venue/tourist-info" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
-                    Tourist Information
                   </Link>
                 </div>
               </div>
 
+              {/* Committees */}
               <div>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.22em] mb-4">Quick</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.22em] mb-4">Committees</p>
                 <div className="space-y-3">
-                  <Link to="/program/overview" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
-                    Program Overview
+                  <Link
+                    to="/committees/international"
+                    className="block text-slate-900 font-extrabold"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    International Committee
                   </Link>
-                  <Link to="/abstracts/submission" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
-                    Abstract Submission
+                  <Link
+                    to="/committees/scientific"
+                    className="block text-slate-900 font-extrabold"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Scientific Committee
                   </Link>
-                  <Link to="/registration/fees" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
-                    Registration Fees
+                </div>
+              </div>
+
+              {/* Speakers */}
+              <div>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.22em] mb-4">Speakers</p>
+                <div className="space-y-3">
+                  <Link
+                    to="/speakers/plenary"
+                    className="block text-slate-900 font-extrabold"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Plenary Speakers
                   </Link>
-                  <Link to="/registration/page" className="block text-slate-900 font-extrabold" onClick={() => setIsOpen(false)}>
-                    Registration Page
+                  <Link
+                    to="/speakers/invited"
+                    className="block text-slate-900 font-extrabold"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Invited Speakers
                   </Link>
                 </div>
               </div>
             </div>
 
+            {/* CTA */}
             <Link
               to="/registration/fees"
               className="block w-full rounded-2xl bg-blue-600 text-white font-black px-4 py-4 text-center uppercase tracking-[0.2em] text-[11px] hover:bg-blue-700 transition"
               onClick={() => setIsOpen(false)}
             >
-              Register Now
+              Register
             </Link>
 
             <div className="h-[3px] w-full rounded-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
