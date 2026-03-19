@@ -32,12 +32,12 @@ const PlenarySpeakers: React.FC = () => {
     },
     {
       code: "PL3",
-      name: "To be announced",
-      affiliation: "Institution to be announced",
-      title: "Lorem ipsum — title pending",
+      name: "Marina Kuimova",
+      affiliation: "Imperial College of London ",
+      title: "Professor of Chemical Physics",
       bio:
-        "This plenary lecture will be announced soon. The final speaker and abstract will be published once confirmed.",
-      photo: "/assets/ponentes/pl3-placeholder.jpg", // opcional: si no existe, saldrá placeholder con iniciales
+        "Her research interests include elucidation of biologically relevant processes using different types of fluorescence imaging and time-resolved spectroscopy. The group elucidates the nature of processes involved in cell function and death, including those during Photodynamic Therapy (PDT) as well as designs and characterises FLIM probes.",
+      photo: "/assets/ponentes/marina-kuimova.jpg", // ajusta si tu archivo se llama distinto
       isPlaceholder: true,
     },
   ];
