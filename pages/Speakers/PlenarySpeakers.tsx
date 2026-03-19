@@ -38,7 +38,6 @@ const PlenarySpeakers: React.FC = () => {
       bio:
         "Her research interests include elucidation of biologically relevant processes using different types of fluorescence imaging and time-resolved spectroscopy. The group elucidates the nature of processes involved in cell function and death, including those during Photodynamic Therapy (PDT) as well as designs and characterises FLIM probes.",
       photo: "/assets/ponentes/marina-kuimova.jpg", // ajusta si tu archivo se llama distinto
-      isPlaceholder: true,
     },
   ];
 
