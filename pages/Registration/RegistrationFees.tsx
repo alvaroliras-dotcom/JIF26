@@ -7,32 +7,63 @@ const RegistrationFees: React.FC = () => {
         Registration Fees
       </h1>
 
-      <div className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden mb-12">
-        <div className="overflow-x-auto">
-          <table className="min-w-[700px] w-full text-left">
-            <thead className="bg-slate-900 text-white">
-              <tr>
-                <th className="px-4 sm:px-6 py-4">Category</th>
-                <th className="px-4 sm:px-6 py-4">Before June 30th, 2026</th>
-                <th className="px-4 sm:px-6 py-4">After June 30th, 2026</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b">
-                <td className="px-4 sm:px-6 py-4 font-semibold">Senior researcher</td>
-                <td className="px-4 sm:px-6 py-4">480 € / 400 € (GRUFO members)</td>
-                <td className="px-4 sm:px-6 py-4">550 € / 480 € (GRUFO members)</td>
-              </tr>
-              <tr>
-                <td className="px-4 sm:px-6 py-4 font-semibold">Student</td>
-                <td className="px-4 sm:px-6 py-4">280 € / 200 € (GRUFO members)</td>
-                <td className="px-4 sm:px-6 py-4">350 € / 280 € (GRUFO members)</td>
-              </tr>
-            </tbody>
-          </table>
+      {/* DESKTOP TABLE */}
+      <div className="hidden md:block bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden mb-12">
+        <table className="w-full text-left">
+          <thead className="bg-slate-900 text-white">
+            <tr>
+              <th className="px-6 py-4">Category</th>
+              <th className="px-6 py-4">Before June 30th, 2026</th>
+              <th className="px-6 py-4">After June 30th, 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b">
+              <td className="px-6 py-4 font-semibold">Senior researcher</td>
+              <td className="px-6 py-4">480 € / 400 € (GRUFO members)</td>
+              <td className="px-6 py-4">550 € / 480 € (GRUFO members)</td>
+            </tr>
+            <tr>
+              <td className="px-6 py-4 font-semibold">Student</td>
+              <td className="px-6 py-4">280 € / 200 € (GRUFO members)</td>
+              <td className="px-6 py-4">350 € / 280 € (GRUFO members)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* MOBILE CARDS */}
+      <div className="md:hidden space-y-4 mb-12">
+        <div className="bg-white rounded-3xl shadow-lg border border-slate-100 p-6">
+          <h3 className="font-bold text-lg mb-4">Senior researcher</h3>
+          <div className="space-y-2 text-slate-700">
+            <p>
+              <span className="font-semibold">Before June 30th, 2026:</span><br />
+              480 € / 400 € (GRUFO members)
+            </p>
+            <p>
+              <span className="font-semibold">After June 30th, 2026:</span><br />
+              550 € / 480 € (GRUFO members)
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl shadow-lg border border-slate-100 p-6">
+          <h3 className="font-bold text-lg mb-4">Student</h3>
+          <div className="space-y-2 text-slate-700">
+            <p>
+              <span className="font-semibold">Before June 30th, 2026:</span><br />
+              280 € / 200 € (GRUFO members)
+            </p>
+            <p>
+              <span className="font-semibold">After June 30th, 2026:</span><br />
+              350 € / 280 € (GRUFO members)
+            </p>
+          </div>
         </div>
       </div>
 
+      {/* RESTO */}
       <div className="grid md:grid-cols-2 gap-8">
         <div className="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-100">
           <h2 className="text-xl font-bold mb-4">Registration includes</h2>
