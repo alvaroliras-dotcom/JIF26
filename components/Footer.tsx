@@ -7,7 +7,7 @@ const sponsors = [
   { src: "/assets/logo-luzchen.png", alt: "Luzchen" },
   { src: "/assets/logo-quima.png", alt: "Quima" },
   { src: "/assets/logo-uv-consulting.png", alt: "UV Consulting" },
-  { src: "/assets/logo-lasing.png", alt: "Lasing" },
+  { src: "/assets/Logotipo_Lasing.png", alt: "Lasing" },
 ];
 
 const Footer: React.FC = () => {
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
             </h4>
           </div>
 
-          {/* Carrusel real */}
+          {/* Carrusel */}
           <div className="overflow-hidden relative">
             <div
               className="flex gap-16 w-max"
@@ -101,9 +101,21 @@ const Footer: React.FC = () => {
                   Venue
                 </h4>
                 <ul className="space-y-3 text-[13px] font-medium">
-                  <li><Link to="/venue/location" className="text-slate-300/80 hover:text-white transition-colors">Location</Link></li>
-                  <li><Link to="/venue/how-to-get" className="text-slate-300/80 hover:text-white transition-colors">Travel Info</Link></li>
-                  <li><Link to="/venue/tourist-info" className="text-slate-300/80 hover:text-white transition-colors">Segovia Info</Link></li>
+                  <li>
+                    <Link to="/venue/location" className="text-slate-300/80 hover:text-white transition-colors">
+                      Location
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/venue/how-to-get" className="text-slate-300/80 hover:text-white transition-colors">
+                      Travel Info
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/venue/tourist-info" className="text-slate-300/80 hover:text-white transition-colors">
+                      Segovia Info
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -112,9 +124,21 @@ const Footer: React.FC = () => {
                   Quick Links
                 </h4>
                 <ul className="space-y-3 text-[13px] font-medium">
-                  <li><Link to="/program/overview" className="text-slate-300/80 hover:text-white transition-colors">Scientific Program</Link></li>
-                  <li><Link to="/abstracts/submission" className="text-slate-300/80 hover:text-white transition-colors">Submissions</Link></li>
-                  <li><Link to="/registration/fees" className="text-slate-300/80 hover:text-white transition-colors">Fees</Link></li>
+                  <li>
+                    <Link to="/program/overview" className="text-slate-300/80 hover:text-white transition-colors">
+                      Scientific Program
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/abstracts/submission" className="text-slate-300/80 hover:text-white transition-colors">
+                      Submissions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/registration/fees" className="text-slate-300/80 hover:text-white transition-colors">
+                      Fees
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
