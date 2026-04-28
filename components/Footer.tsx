@@ -61,13 +61,13 @@ const Footer: React.FC = () => {
             </div>
 
             <div className="w-[140px] h-[60px] flex items-center justify-center">
-              <img
-                src="/assets/logo-lasing.png"
-                alt="Lasing"
-                className="max-h-[38px] w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
+  <img
+    src="/assets/logo-lasing.png"
+    alt="Lasing"
+    className="max-h-[48px] w-auto object-contain opacity-100 transition-all duration-300"
+    loading="lazy"
+  />
+</div>
           </div>
         </div>
 
