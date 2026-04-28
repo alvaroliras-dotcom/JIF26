@@ -1,11 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const sponsors = [
+  { src: "/assets/logo-grufo.png", alt: "GRUFO" },
+  { src: "/assets/logo-rseq.png", alt: "RSEQ" },
+  { src: "/assets/logo-luzchen.png", alt: "Luzchen" },
+  { src: "/assets/logo-quima.png", alt: "Quima" },
+  { src: "/assets/logo-uv-consulting.png", alt: "UV Consulting" },
+  { src: "/assets/logo-lasing.png", alt: "Lasing" },
+];
+
 const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 text-slate-300">
-      {/* Sponsors Band (gris claro) */}
-      <div className="bg-slate-50 border-t border-slate-200">
+      {/* CSS embebido solo para este componente */}
+      <style>
+        {`
+          @keyframes sponsorScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}
+      </style>
+
+      {/* Sponsors Band */}
+      <div className="bg-slate-50 border-t border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <div className="text-center mb-10">
             <h4 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.4em]">
@@ -13,61 +32,30 @@ const Footer: React.FC = () => {
             </h4>
           </div>
 
-          {/* GRID NORMALIZADO VISUALMENTE */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-8 items-center justify-items-center">
-            <div className="w-[140px] h-[60px] flex items-center justify-center">
-              <img
-                src="/assets/logo-grufo.png"
-                alt="GRUFO"
-                className="max-h-[52px] w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
-                loading="lazy"
-              />
+          {/* Carrusel real */}
+          <div className="overflow-hidden relative">
+            <div
+              className="flex gap-16 w-max"
+              style={{
+                animation: "sponsorScroll 24s linear infinite",
+              }}
+            >
+              {[...sponsors, ...sponsors].map((logo, i) => (
+                <div
+                  key={i}
+                  className="w-[180px] h-[70px] flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className={`w-auto object-contain opacity-100 ${
+                      logo.alt === "Lasing" ? "max-h-[58px]" : "max-h-[52px]"
+                    }`}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
             </div>
-
-            <div className="w-[140px] h-[60px] flex items-center justify-center">
-              <img
-                src="/assets/logo-rseq.png"
-                alt="RSEQ"
-                className="max-h-[46px] w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="w-[140px] h-[60px] flex items-center justify-center">
-              <img
-                src="/assets/logo-luzchen.png"
-                alt="Luzchen"
-                className="max-h-[46px] w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="w-[140px] h-[60px] flex items-center justify-center">
-              <img
-                src="/assets/logo-quima.png"
-                alt="Quima"
-                className="max-h-[46px] w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="w-[140px] h-[60px] flex items-center justify-center">
-              <img
-                src="/assets/logo-uv-consulting.png"
-                alt="UV Consulting"
-                className="max-h-[46px] w-auto object-contain opacity-95 hover:opacity-100 transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="w-[140px] h-[60px] flex items-center justify-center">
-  <img
-    src="/assets/logo-lasing.png"
-    alt="Lasing"
-    className="max-h-[48px] w-auto object-contain opacity-100 transition-all duration-300"
-    loading="lazy"
-  />
-</div>
           </div>
         </div>
 
@@ -113,21 +101,9 @@ const Footer: React.FC = () => {
                   Venue
                 </h4>
                 <ul className="space-y-3 text-[13px] font-medium">
-                  <li>
-                    <Link to="/venue/location" className="text-slate-300/80 hover:text-white transition-colors">
-                      Location
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/venue/how-to-get" className="text-slate-300/80 hover:text-white transition-colors">
-                      Travel Info
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/venue/tourist-info" className="text-slate-300/80 hover:text-white transition-colors">
-                      Segovia Info
-                    </Link>
-                  </li>
+                  <li><Link to="/venue/location" className="text-slate-300/80 hover:text-white transition-colors">Location</Link></li>
+                  <li><Link to="/venue/how-to-get" className="text-slate-300/80 hover:text-white transition-colors">Travel Info</Link></li>
+                  <li><Link to="/venue/tourist-info" className="text-slate-300/80 hover:text-white transition-colors">Segovia Info</Link></li>
                 </ul>
               </div>
 
@@ -136,21 +112,9 @@ const Footer: React.FC = () => {
                   Quick Links
                 </h4>
                 <ul className="space-y-3 text-[13px] font-medium">
-                  <li>
-                    <Link to="/program/overview" className="text-slate-300/80 hover:text-white transition-colors">
-                      Scientific Program
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/abstracts/submission" className="text-slate-300/80 hover:text-white transition-colors">
-                      Submissions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/registration/fees" className="text-slate-300/80 hover:text-white transition-colors">
-                      Fees
-                    </Link>
-                  </li>
+                  <li><Link to="/program/overview" className="text-slate-300/80 hover:text-white transition-colors">Scientific Program</Link></li>
+                  <li><Link to="/abstracts/submission" className="text-slate-300/80 hover:text-white transition-colors">Submissions</Link></li>
+                  <li><Link to="/registration/fees" className="text-slate-300/80 hover:text-white transition-colors">Fees</Link></li>
                 </ul>
               </div>
 
