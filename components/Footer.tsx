@@ -8,6 +8,7 @@ const sponsors = [
   { src: "/assets/logo-quima.png", alt: "Quima" },
   { src: "/assets/logo-uv-consulting.png", alt: "UV Consulting" },
   { src: "/assets/Logotipo_Lasing.png", alt: "Lasing" },
+  { src: "/assets/AF_LOGO_MTB_ESP ALTA.png", alt: "AF" },
 ];
 
 const Footer: React.FC = () => {
@@ -48,8 +49,10 @@ const Footer: React.FC = () => {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className={`w-auto object-contain opacity-100 ${
-                      logo.alt === "Lasing" ? "max-h-[58px]" : "max-h-[52px]"
+                    className={`w-auto object-contain opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100 ${
+                      logo.alt === "Lasing" || logo.alt === "AF"
+                        ? "max-h-[58px]"
+                        : "max-h-[52px]"
                     }`}
                     loading="lazy"
                   />
