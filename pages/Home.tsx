@@ -189,47 +189,51 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* WELCOME */}
-      <section className="py-24 bg-white border-b border-slate-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
-            Welcome
-          </h2>
-          <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-12"></div>
+ {/* WELCOME */}
+		<section className="py-24 bg-white border-b border-slate-50">
+		  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2 className="text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
+			  Welcome
+			</h2>
+			<div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-12"></div>
 
-          <div className="prose prose-xl text-slate-600 max-w-none space-y-8 leading-relaxed">
-            <p className="font-bold text-slate-900 italic text-2xl">
-              Welcome to the IX Jornadas Ibéricas de Fotoquímica (IX JIF) & II
-              Franco-Iberian Conference on Photochemistry (II FICP)
-            </p>
+			<div className="prose prose-xl text-slate-600 max-w-none space-y-8 leading-relaxed">
+			  <p className="font-bold text-slate-900 italic text-2xl">
+				Welcome to the IX Jornadas Ibéricas de Fotoquímica (IX JIF) & II
+				Franco-Iberian Conference on Photochemistry (II FICP)
+			  </p>
 
-            <p>
-              The Grupo Especializado de Fotoquímica of the Real Sociedad Española
-              de Química (GRUFO-RSEQ) and the Grupo de Fotoquímica of the Sociedade
-              Portuguesa de Química (SPQ) cordially invite you to participate in
-              the Ninth Jornadas Ibéricas de Fotoquímica (IX JIF). To strengthen the
-              cooperation with the Photochimie, Photophysique et Photosciences
-              division (SP2P) of the Société Chimique de France (SCF), we are
-              pleased to host the II Franco-Iberian Conference on Photochemistry
-              (II FICP).
-            </p>
+			  <p>
+				The Grupo Especializado de Fotoquímica of the Real Sociedad Española
+				de Química (GRUFO-RSEQ) and the Grupo de Fotoquímica of the Sociedade
+				Portuguesa de Química (SPQ) cordially invite you to participate in
+				the Ninth Jornadas Ibéricas de Fotoquímica (IX JIF). To strengthen the
+				cooperation with the Photochimie, Photophysique et Photosciences
+				division (SP2P) of the Société Chimique de France (SCF), we are
+				pleased to host the II Franco-Iberian Conference on Photochemistry
+				(II FICP).
+			  </p>
 
-            <p>
-              The meeting will be held from{" "}
-              <strong>September 2nd to 4th, 2026</strong> at the{" "}
-              <strong>
-                Campus María Zambrano Segovia, Universidad de Valladolid
-              </strong>
-              , in Segovia (Castilla y León), Spain.
-            </p>
+			  <p>
+				The meeting will be held from{" "}
+				<strong>September 2nd to 4th, 2026</strong> at the{" "}
+				<strong>
+				  Campus María Zambrano Segovia, Universidad de Valladolid
+				</strong>
+				, in Segovia (Castilla y León), Spain.
+			  </p>
 
-            <p>
-              The IX JIF meeting builds on the tradition of the previous ones
-              (Santiago de Compostela in 2003, Faro in 2007, Granada in 2011,
-              Lisbon in 2014, Toledo in 2016, Aveiro in 2018, Alcalá de Henares
-              in 2022 and Lisbon in 2024) to foster collaboration among Spanish,
-              Portuguese, and French photochemistry communities.
-            </p>
+			  <p>
+				The IX JIF meeting builds on the tradition of the previous ones
+				(Santiago de Compostela in 2003, Faro in 2007, Granada in 2011,
+				Lisbon in 2014, Toledo in 2016, Aveiro in 2018, Alcalá de Henares
+				in 2022 and Lisbon in 2024) to foster collaboration among Spanish,
+				Portuguese, and French photochemistry communities.
+			  </p>
+			</div>
+
+		  </div>
+		</section>
 	  
 	  
 	        {/* IMPORTANT DATES */}
