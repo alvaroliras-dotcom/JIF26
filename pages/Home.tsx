@@ -4,17 +4,23 @@ const Home: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
+    console.log("POPUP EFFECT RUNNING");
+
     if (typeof window === "undefined") return;
 
     const alreadyShown = sessionStorage.getItem("deadlinePopup");
+    console.log("STORAGE VALUE:", alreadyShown);
 
     if (!alreadyShown) {
       const timer = setTimeout(() => {
+        console.log("POPUP SHOULD SHOW NOW");
         setShowPopup(true);
         sessionStorage.setItem("deadlinePopup", "true");
       }, 4000);
 
       return () => clearTimeout(timer);
+    } else {
+      console.log("POPUP BLOCKED BY STORAGE");
     }
   }, []);
 
