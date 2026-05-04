@@ -1,8 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Home: React.FC = () => {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const alreadyShown = sessionStorage.getItem("deadlinePopup");
+
+    if (!alreadyShown) {
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+        sessionStorage.setItem("deadlinePopup", "true");
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <div className="animate-in fade-in duration-1000">
+
+      {/* 🔴 POPUP */}
+      {showPopup && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/55 backdrop-blur-sm px-4"
+          onClick={() => setShowPopup(false)}
+        >
+          <div
+            className="relative w-full max-w-md rounded-[2rem] border border-white/15 bg-slate-900/75 px-8 py-9 text-center text-white shadow-2xl backdrop-blur-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowPopup(false)}
+              className="absolute right-5 top-4 text-2xl text-white/60 hover:text-white"
+            >
+              ×
+            </button>
+
+            <p className="text-sm font-bold mb-4">
+              Deadline extended until May 10
+            </p>
+
+            <a
+              href="/#/abstracts/submission"
+              className="inline-block mt-4 px-6 py-3 bg-fuchsia-600 rounded-xl"
+            >
+              Submit Abstract
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* HERO */}
       <section className="relative h-[88vh] min-h-[720px] flex items-center overflow-hidden bg-slate-950">
         {/* Background */}
@@ -152,54 +203,16 @@ const Home: React.FC = () => {
               , in Segovia (Castilla y León), Spain.
             </p>
 
-            {/* ✅ FALTABA en tu HOME */}
             <p>
               The IX JIF meeting builds on the tradition of the previous ones
               (Santiago de Compostela in 2003, Faro in 2007, Granada in 2011,
               Lisbon in 2014, Toledo in 2016, Aveiro in 2018, Alcalá de Henares
               in 2022 and Lisbon in 2024) to foster collaboration among Spanish,
-              Portuguese, and French photochemistry communities. This event will
-              delve into the latest advancements in both fundamental and applied
-              photochemistry, spanning a broad array of chemical, physical, and
-              biological processes studied using light.
+              Portuguese, and French photochemistry communities.
             </p>
-
-            <p className="font-black text-slate-900 text-3xl pt-8">
-              We hope to see you in Segovia!
-            </p>
-
-            {/* ✅ Cierre extra del Word */}
-            <p>
-              We are excited to host this prestigious gathering of photochemistry
-              researchers and students, and we look forward to your active
-              participation in what promises to be an enriching and collaborative
-              event.
-            </p>
-
-            <p>
-              For any additional information or assistance, please do not hesitate
-              to contact us.
-            </p>
-
-            {/* ✅ Contact mailto */}
-            <div className="pt-4">
-              <a
-  href="mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact"
-  onClick={(e) => {
-    e.preventDefault();
-    window.location.href =
-      "mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact";
-  }}
-  className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
->
-  Contact
-</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* IMPORTANT DATES */}
+	  
+	  
+	        {/* IMPORTANT DATES */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -308,8 +321,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* PRESENTATION GUIDELINES / FORMATS */}
+	  
+	  
+	        {/* PRESENTATION GUIDELINES / FORMATS */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
