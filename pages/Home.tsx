@@ -1,8 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Home: React.FC = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const alreadyShown = sessionStorage.getItem("deadlinePopup");
+
+    if (!alreadyShown) {
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+        sessionStorage.setItem("deadlinePopup", "true");
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <div className="animate-in fade-in duration-1000">
+      {/* DEADLINE EXTENSION POPUP */}
+      {showPopup && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/55 backdrop-blur-sm px-4"
+          onClick={() => setShowPopup(false)}
+        >
+          <div
+            className="relative w-full max-w-md rounded-[2rem] border border-white/15 bg-slate-900/75 px-8 py-9 text-center text-white shadow-2xl backdrop-blur-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close popup"
+              onClick={() => setShowPopup(false)}
+              className="absolute right-5 top-4 text-2xl leading-none text-white/60 transition hover:text-white"
+            >
+              ×
+            </button>
+
+            <img
+              src="/assets/logo-jif26-texto.png"
+              alt="JIF 2026"
+              className="mx-auto mb-6 w-28 rounded-2xl bg-white/95 p-3"
+              loading="eager"
+            />
+
+            <p className="mb-3 text-[11px] font-black uppercase tracking-[0.35em] text-fuchsia-300">
+              Extensión de plazo
+            </p>
+
+            <h2 className="font-black uppercase tracking-tight text-white">
+              <span className="block text-2xl leading-tight">
+                Envío de abstracts
+              </span>
+              <span className="mt-1 block text-2xl leading-tight">
+                hasta el <span className="text-fuchsia-300">10 de mayo</span>
+              </span>
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-sm text-sm leading-relaxed text-white/75">
+              El plazo para el envío de abstracts se ha ampliado hasta el{" "}
+              <strong className="font-black text-white">10 de mayo</strong>.
+              Consulta más información y envía tu abstract desde aquí.
+            </p>
+
+            <a
+              href="/#/abstracts/submission"
+              className="mt-7 inline-flex items-center justify-center rounded-2xl bg-fuchsia-600 px-8 py-3 text-[11px] font-black uppercase tracking-[0.22em] text-white shadow-xl transition hover:bg-fuchsia-500 active:scale-[0.99]"
+            >
+              Submit Abstract
+            </a>
+
+            <div className="mt-7 grid grid-cols-2 gap-3">
+              <span className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold text-white/90">
+                📅 2–4 Sept
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold text-white/90">
+                📍 Segovia
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* HERO */}
       <section className="relative h-[88vh] min-h-[720px] flex items-center overflow-hidden bg-slate-950">
         {/* Background */}
@@ -184,16 +265,16 @@ const Home: React.FC = () => {
             {/* ✅ Contact mailto */}
             <div className="pt-4">
               <a
-  href="mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact"
-  onClick={(e) => {
-    e.preventDefault();
-    window.location.href =
-      "mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact";
-  }}
-  className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
->
-  Contact
-</a>
+                href="mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href =
+                    "mailto:jif2026.segovia@gmail.com?subject=JIF%202026%20-%20Contact";
+                }}
+                className="inline-flex items-center justify-center px-8 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 font-black text-[11px] uppercase tracking-[0.22em] hover:bg-slate-50 transition"
+              >
+                Contact
+              </a>
             </div>
           </div>
         </div>
@@ -239,7 +320,7 @@ const Home: React.FC = () => {
                       Deadline
                     </span>
                     <span className="font-black text-fuchsia-700 text-base">
-                      1st May
+                      10th May
                     </span>
                   </div>
                   <div className="flex justify-between items-baseline">
