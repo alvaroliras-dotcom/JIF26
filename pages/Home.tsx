@@ -62,7 +62,7 @@ const Home: React.FC = () => {
       {/* TEXTO */}
       <p className="text-sm text-white/80 mb-8 leading-relaxed">
         Due to multiple requests, the abstract submission deadline has been extended.
-        Don't miss the opportunity to present your work at JIF 2026.
+        {" Don't"} miss the opportunity to present your work at JIF 2026.
       </p>
 
       {/* CTA */}
@@ -86,9 +86,7 @@ const Home: React.FC = () => {
             className="w-full h-full object-cover scale-[1.03]"
             loading="eager"
           />
-          {/* Overlay correcto (no plano) */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/55 to-slate-950/10" />
-          {/* Overlay espectral (tu clase existente) */}
           <div className="absolute inset-0 spectrum-overlay opacity-75 mix-blend-screen" />
         </div>
 
@@ -191,54 +189,53 @@ const Home: React.FC = () => {
         </div>
       </section>
 
- {/* WELCOME */}
-		<section className="py-24 bg-white border-b border-slate-50">
-		  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-			<h2 className="text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
-			  Welcome
-			</h2>
-			<div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-12"></div>
+      {/* WELCOME */}
+      <section className="py-24 bg-white border-b border-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
+            Welcome
+          </h2>
+          <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-12"></div>
 
-			<div className="prose prose-xl text-slate-600 max-w-none space-y-8 leading-relaxed">
-			  <p className="font-bold text-slate-900 italic text-2xl">
-				Welcome to the IX Jornadas Ibéricas de Fotoquímica (IX JIF) & II
-				Franco-Iberian Conference on Photochemistry (II FICP)
-			  </p>
+          <div className="prose prose-xl text-slate-600 max-w-none space-y-8 leading-relaxed">
+            <p className="font-bold text-slate-900 italic text-2xl">
+              Welcome to the IX Jornadas Ibéricas de Fotoquímica (IX JIF) & II
+              Franco-Iberian Conference on Photochemistry (II FICP)
+            </p>
 
-			  <p>
-				The Grupo Especializado de Fotoquímica of the Real Sociedad Española
-				de Química (GRUFO-RSEQ) and the Grupo de Fotoquímica of the Sociedade
-				Portuguesa de Química (SPQ) cordially invite you to participate in
-				the Ninth Jornadas Ibéricas de Fotoquímica (IX JIF). To strengthen the
-				cooperation with the Photochimie, Photophysique et Photosciences
-				division (SP2P) of the Société Chimique de France (SCF), we are
-				pleased to host the II Franco-Iberian Conference on Photochemistry
-				(II FICP).
-			  </p>
+            <p>
+              The Grupo Especializado de Fotoquímica of the Real Sociedad Española
+              de Química (GRUFO-RSEQ) and the Grupo de Fotoquímica of the Sociedade
+              Portuguesa de Química (SPQ) cordially invite you to participate in
+              the Ninth Jornadas Ibéricas de Fotoquímica (IX JIF). To strengthen the
+              cooperation with the Photochimie, Photophysique et Photosciences
+              division (SP2P) of the Société Chimique de France (SCF), we are
+              pleased to host the II Franco-Iberian Conference on Photochemistry
+              (II FICP).
+            </p>
 
-			  <p>
-				The meeting will be held from{" "}
-				<strong>September 2nd to 4th, 2026</strong> at the{" "}
-				<strong>
-				  Campus María Zambrano Segovia, Universidad de Valladolid
-				</strong>
-				, in Segovia (Castilla y León), Spain.
-			  </p>
+            <p>
+              The meeting will be held from{" "}
+              <strong>September 2nd to 4th, 2026</strong> at the{" "}
+              <strong>
+                Campus María Zambrano Segovia, Universidad de Valladolid
+              </strong>
+              , in Segovia (Castilla y León), Spain.
+            </p>
 
-			  <p>
-				The IX JIF meeting builds on the tradition of the previous ones
-				(Santiago de Compostela in 2003, Faro in 2007, Granada in 2011,
-				Lisbon in 2014, Toledo in 2016, Aveiro in 2018, Alcalá de Henares
-				in 2022 and Lisbon in 2024) to foster collaboration among Spanish,
-				Portuguese, and French photochemistry communities.
-			  </p>
-			</div>
+            <p>
+              The IX JIF meeting builds on the tradition of the previous ones
+              (Santiago de Compostela in 2003, Faro in 2007, Granada in 2011,
+              Lisbon in 2014, Toledo in 2016, Aveiro in 2018, Alcalá de Henares
+              in 2022 and Lisbon in 2024) to foster collaboration among Spanish,
+              Portuguese, and French photochemistry communities.
+            </p>
+          </div>
+        </div>
+      </section>
 
-		  </div>
-		</section>
-	  
-	  
-	        {/* IMPORTANT DATES */}
+
+      {/* IMPORTANT DATES */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -347,9 +344,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-	  
-	  
-	        {/* PRESENTATION GUIDELINES / FORMATS */}
+
+
+      {/* PRESENTATION GUIDELINES / FORMATS */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -384,7 +381,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ✅ MEALS AND SOCIAL EVENTS (FALTABA) */}
+      {/* MEALS AND SOCIAL EVENTS */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -399,20 +396,17 @@ const Home: React.FC = () => {
               {
                 title: "Welcome Reception",
                 subtitle: "September 2nd (evening/late afternoon)",
-                text:
-                  "Welcome reception with drinks and snacks will be held at the Conference Venue on the evening/late afternoon of September 2nd.",
+                text: "Welcome reception with drinks and snacks will be held at the Conference Venue on the evening/late afternoon of September 2nd.",
               },
               {
                 title: "Lunches",
                 subtitle: "Included with registration",
-                text:
-                  "Lunches are included with the registration fee and will be served in the conference venue.",
+                text: "Lunches are included with the registration fee and will be served in the conference venue.",
               },
               {
                 title: "Conference Dinner",
                 subtitle: "September 3rd (to be determined)",
-                text:
-                  "The registration fee includes the Conference Dinner. It will be held on September 3rd at Convento de Minimos",
+                text: "The registration fee includes the Conference Dinner. It will be held on September 3rd at Convento de Minimos",
               },
             ].map((item) => (
               <div
@@ -437,7 +431,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ✅ AWARDS AND PRIZES (FALTABA) */}
+      {/* AWARDS AND PRIZES */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
