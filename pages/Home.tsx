@@ -362,4 +362,130 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { code: "PL", title: "Plenary Lectures", desc: "40 minutes + 5 minutes Q&A" },
-              { code: "IL", title: "Invited Lectures", desc:
+              { code: "IL", title: "Invited Lectures", desc: "25 minutes + 5 minutes Q&A" },
+              { code: "OC", title: "Oral Presentations", desc: "12 minutes + 3 minutes Q&A" },
+              { code: "PP", title: "Poster Presentations", desc: "A0 Portrait (841 × 1189 mm)" },
+            ].map((f) => (
+              <div
+                key={f.code}
+                className="group p-8 rounded-[2rem] border border-slate-100 bg-slate-50 transition hover:-translate-y-1 hover:shadow-2xl hover:bg-slate-950 hover:text-white overflow-hidden"
+              >
+                <div className="h-[3px] w-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-0 group-hover:opacity-80 transition" />
+                <span className="mt-6 block text-5xl font-black text-slate-200 group-hover:text-white/20 transition-colors">
+                  {f.code}
+                </span>
+                <h4 className="mt-6 text-lg font-black uppercase tracking-tight">
+                  {f.title}
+                </h4>
+                <p className="mt-2 text-sm opacity-70">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ✅ MEALS AND SOCIAL EVENTS (FALTABA) */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
+              Meals and Social Events
+            </h2>
+            <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Welcome Reception",
+                subtitle: "September 2nd (evening/late afternoon)",
+                text:
+                  "Welcome reception with drinks and snacks will be held at the Conference Venue on the evening/late afternoon of September 2nd.",
+              },
+              {
+                title: "Lunches",
+                subtitle: "Included with registration",
+                text:
+                  "Lunches are included with the registration fee and will be served in the conference venue.",
+              },
+              {
+                title: "Conference Dinner",
+                subtitle: "September 3rd (to be determined)",
+                text:
+                  "The registration fee includes the Conference Dinner. It will be held on September 3rd at Convento de Minimos",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition overflow-hidden"
+              >
+                <div className="h-[3px] w-full bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
+                <div className="p-10">
+                  <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight">
+                    {item.title}
+                  </h4>
+                  <p className="mt-2 text-xs font-black uppercase tracking-[0.22em] text-slate-400">
+                    {item.subtitle}
+                  </p>
+                  <p className="mt-6 text-slate-600 leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ✅ AWARDS AND PRIZES (FALTABA) */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
+            Awards and Prizes
+          </h2>
+          <div className="h-1.5 w-16 bg-slate-900 mx-auto rounded-full mb-10"></div>
+
+          <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-10">
+            <p className="text-slate-700 text-lg font-bold">To be determined</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 spectrum-overlay opacity-20 pointer-events-none"></div>
+        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-fuchsia-500 via-amber-400 via-lime-400 via-sky-500 to-violet-500 opacity-80" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white relative z-10">
+          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-white/60">
+            JIF 2026
+          </p>
+          <h2 className="mt-4 text-4xl md:text-5xl font-black uppercase tracking-tight">
+            Participate in JIF 2026
+          </h2>
+          <p className="mt-6 text-lg md:text-xl text-white/70 font-medium">
+            Submit your research and join the leading photochemistry conference in the Iberian Peninsula.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            
+              href="/#/registration/fees"
+              className="px-10 py-4 rounded-2xl bg-fuchsia-600 text-white font-black text-[11px] uppercase tracking-[0.22em] shadow-xl hover:bg-fuchsia-500 transition active:scale-[0.99]"
+            >
+              Register Now
+            </a>
+            
+              href="/#/abstracts/submission"
+              className="px-10 py-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur text-white font-black text-[11px] uppercase tracking-[0.22em] hover:bg-white/10 hover:border-white/30 transition active:scale-[0.99]"
+            >
+              Submit Abstract
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section is in Footer */}
+    </div>
+  );
+};
+
+export default Home;
