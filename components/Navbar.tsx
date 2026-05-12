@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
                 <NavContainer title="Registration">
                   <SubNavItem to="/registration/fees" label="Registration Fees" />
                   <SubNavItem to="/registration/accommodation" label="Accommodation" />
-                  <SubNavItem to="/registration/page" label="Registration Page" />
+
                 </NavContainer>
               </div>
 
