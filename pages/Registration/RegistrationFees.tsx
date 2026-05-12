@@ -105,6 +105,26 @@ const RegistrationFees: React.FC = () => {
           jif2026.segovia@gmail.com
         </a>
       </div>
+
+      {/* SP2P support notice */}
+      <div className="mt-8 bg-amber-50 border border-amber-200 p-6 sm:p-8 rounded-3xl">
+        <div className="flex gap-3 items-start">
+          <span className="text-amber-500 text-xl mt-0.5">⚠️</span>
+          <p className="text-slate-700 leading-relaxed">
+            The French subdivision <strong>SP2P</strong> will support the registration fees for a limited
+            number of PhD students and postdoctoral researchers. If you would like to apply, please
+            contact us for further details by email:{" "}
+            <a href="mailto:olivier.soppera@uha.fr" className="font-semibold underline hover:text-amber-700">
+              olivier.soppera@uha.fr
+            </a>{" "}
+            and{" "}
+            <a href="mailto:julien.boixel@univ-rennes.fr" className="font-semibold underline hover:text-amber-700">
+              julien.boixel@univ-rennes.fr
+            </a>
+            . <strong>Deadline for abstract submission: 29th May 2026.</strong>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
