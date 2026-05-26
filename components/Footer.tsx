@@ -9,6 +9,7 @@ const sponsors = [
   { src: "/assets/logo-uv-consulting.png", alt: "UV Consulting" },
   { src: "/assets/Logotipo_Lasing.png", alt: "Lasing" },
   { src: "/assets/AF_LOGO_MTB_ESP ALTA.png", alt: "AF" },
+  { src: "/assets/PEPR LUMA.png", alt: "PEPR LUMA" },
 ];
 
 const Footer: React.FC = () => {
