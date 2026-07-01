@@ -7,12 +7,12 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const alreadyShown = sessionStorage.getItem("deadlinePopup");
+    const alreadyShown = sessionStorage.getItem("earlyBirdPopup2026");
 
     if (!alreadyShown) {
       const timer = setTimeout(() => {
         setShowPopup(true);
-        sessionStorage.setItem("deadlinePopup", "true");
+        sessionStorage.setItem("earlyBirdPopup2026", "true");
       }, 4000);
 
       return () => clearTimeout(timer);
@@ -35,16 +35,22 @@ const Home: React.FC = () => {
               <img src="/assets/logo-jif26-texto.png" alt="JIF 2026" className="w-full opacity-100" />
             </div>
 
-            <h3 className="text-xl md:text-2xl font-black mb-3">Abstract Deadline Extended</h3>
+            <h3 className="text-xl md:text-2xl font-black mb-3">Early Bird Fee</h3>
 
-            <p className="text-lg font-semibold text-fuchsia-300 mb-6">New deadline: May 10, 2026</p>
+            <p className="text-lg font-semibold text-fuchsia-300 mb-6">Until 30th June 2026</p>
 
-            <p className="text-sm text-white/80 mb-8 leading-relaxed">
-              Due to multiple requests, the abstract submission deadline has been extended. Do not miss the opportunity to present your work at JIF 2026.
-            </p>
+            <div className="text-sm text-white/80 mb-8 leading-relaxed text-left max-w-sm mx-auto">
+              <p className="font-semibold text-white/90 mb-3 text-center">Registration includes:</p>
+              <ul className="space-y-2">
+                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Attendance to the congress</li>
+                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Delegate documentation</li>
+                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Coffee services and lunches</li>
+                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Welcome cocktail and conference dinner</li>
+              </ul>
+            </div>
 
-            <button type="button" onClick={() => { setShowPopup(false); window.location.href = "/#/abstracts/submission"; }} className="inline-block px-8 py-4 bg-gradient-to-r from-fuchsia-600 to-pink-500 rounded-xl font-black text-sm uppercase tracking-wide shadow-lg hover:scale-105 transition">
-              Submit Your Abstract
+            <button type="button" onClick={() => { setShowPopup(false); window.location.href = "/#/registration/fees"; }} className="inline-block px-8 py-4 bg-gradient-to-r from-fuchsia-600 to-pink-500 rounded-xl font-black text-sm uppercase tracking-wide shadow-lg hover:scale-105 transition">
+              Register Now
             </button>
 
           </div>
