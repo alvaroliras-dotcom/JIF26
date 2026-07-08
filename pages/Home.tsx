@@ -1,61 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Home: React.FC = () => {
-
-  const [showPopup, setShowPopup] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const alreadyShown = sessionStorage.getItem("earlyBirdPopup2026");
-
-    if (!alreadyShown) {
-      const timer = setTimeout(() => {
-        setShowPopup(true);
-        sessionStorage.setItem("earlyBirdPopup2026", "true");
-      }, 4000);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
   return (
     <div className="animate-in fade-in duration-1000">
-
-      {/* 🔴 POPUP PRO */}
-      {showPopup && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-md px-4" onClick={() => setShowPopup(false)}>
-          <div className="relative w-full max-w-xl rounded-[2.5rem] border border-white/20 bg-gradient-to-br from-slate-700 to-slate-600 px-10 py-12 text-center text-white shadow-[0_20px_80px_rgba(0,0,0,0.4)]" onClick={(e) => e.stopPropagation()}>
-
-            <button type="button" onClick={() => setShowPopup(false)} className="absolute right-6 top-5 text-2xl text-white/50 hover:text-white transition">
-              ×
-            </button>
-
-            <div className="mx-auto mb-6 w-44 rounded-2xl bg-white/15 p-3">
-              <img src="/assets/logo-jif26-texto.png" alt="JIF 2026" className="w-full opacity-100" />
-            </div>
-
-            <h3 className="text-xl md:text-2xl font-black mb-3">Early Bird Fee</h3>
-
-            <p className="text-lg font-semibold text-fuchsia-300 mb-6">Until 30th June 2026</p>
-
-            <div className="text-sm text-white/80 mb-8 leading-relaxed text-left max-w-sm mx-auto">
-              <p className="font-semibold text-white/90 mb-3 text-center">Registration includes:</p>
-              <ul className="space-y-2">
-                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Attendance to the congress</li>
-                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Delegate documentation</li>
-                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Coffee services and lunches</li>
-                <li className="flex gap-2"><span className="text-fuchsia-300">•</span> Welcome cocktail and conference dinner</li>
-              </ul>
-            </div>
-
-            <button type="button" onClick={() => { setShowPopup(false); window.location.href = "/#/registration/fees"; }} className="inline-block px-8 py-4 bg-gradient-to-r from-fuchsia-600 to-pink-500 rounded-xl font-black text-sm uppercase tracking-wide shadow-lg hover:scale-105 transition">
-              Register Now
-            </button>
-
-          </div>
-        </div>
-      )}
 
       {/* HERO */}
       <section className="relative h-[88vh] min-h-[720px] flex items-center overflow-hidden bg-slate-950">
