@@ -83,6 +83,7 @@ const Navbar: React.FC = () => {
                 <NavContainer title="Program">
                   <SubNavItem to="/program/overview" label="Program Overview" />
                   <SubNavItem to="/program/full" label="Full Scientific Program" />
+                  <SubNavItem to="/abstracts/book" label="Book of Abstracts" />
                 </NavContainer>
 
                 <NavContainer title="Abstracts">
