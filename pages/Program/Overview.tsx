@@ -27,7 +27,7 @@ const PROGRAM: Day[] = [
     rows: [
       { kind: "reg", time: "08:00 – 09:00", label: "Registration · Campus María Zambrano (Fase 2)" },
       { kind: "ceremony", time: "09:00 – 09:15", room: "Salón de Actos", label: "Opening Ceremony — Marta Liras, João Carlos Lima, Olivier Soppera" },
-      { kind: "plenary", time: "09:15 – 10:00", room: "Salón de Actos", chair: "Marta Liras", code: "PL1", who: "Dirk Guldi", title: "Materials for adaptive light management: dynamic control over light capture, spectral down- and up-conversion, and energy storage" },
+      { kind: "plenary", time: "09:15 – 10:00", room: "Salón de Actos", chair: "Marta Liras", code: "PL1", who: "João Sérgio Seixas de Melo", title: "Photochemistry and Photophysics of Emissive and Non-Emissive Organic Molecules: From Molecular Design to Functional Applications" },
       { kind: "invited", time: "10:00 – 10:30", code: "IL1", who: "Sergio Navalón", title: "Metal-Organic Frameworks for Photocatalytic Water Splitting: Structure-Activity Relationships" },
       { kind: "invited", time: "10:30 – 11:00", code: "IL2", who: "Vitor Brasiliense", title: "Optical methodologies for analysing micro and nanoscale photoreactivity" },
       { kind: "break", time: "11:00 – 11:30", label: "Coffee break & Posters' Session (I)" },
@@ -92,7 +92,7 @@ const PROGRAM: Day[] = [
     weekday: "Thursday",
     date: "3 September 2026",
     rows: [
-      { kind: "plenary", time: "09:00 – 09:45", room: "Salón de Actos", chair: "João Carlos Lima", code: "PL2", who: "João Sérgio Seixas de Melo", title: "Photochemistry and Photophysics of Emissive and Non-Emissive Organic Molecules: From Molecular Design to Functional Applications" },
+      { kind: "plenary", time: "09:00 – 09:45", room: "Salón de Actos", chair: "João Carlos Lima", code: "PL2", who: "Dirk Guldi", title: "Materials for adaptive light management: dynamic control over light capture, spectral down- and up-conversion, and energy storage" },
       { kind: "invited", time: "09:45 – 10:15", code: "IL7", who: "Olga Crespo", title: "Copper(I) tetracoordinated emitters" },
       { kind: "invited", time: "10:15 – 10:45", code: "IL8", who: "Paulo Coelho", title: "Photochromic naphthopyrans: From colour change to photopolymerization" },
       { kind: "break", time: "10:45 – 11:15", label: "Coffee break & Posters' Session (II)" },
