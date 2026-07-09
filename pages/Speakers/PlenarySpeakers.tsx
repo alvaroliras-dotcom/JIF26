@@ -14,21 +14,21 @@ const PlenarySpeakers: React.FC = () => {
   const speakers: Speaker[] = [
     {
       code: "PL1",
-      name: "Dirk Guldi",
-      affiliation: "Friedrich-Alexander University Erlangen-Nürnberg",
-      title: "Professor of Chemistry",
-      bio:
-        "His research focuses on controlling photon and charge management in molecules and nanoscale materials. The group designs, synthesizes and characterizes novel nanometer-scale materials for solar energy conversion, optimizing charge separation/transport and recombination dynamics using advanced spectroscopic and microscopic techniques.",
-      photo: "/assets/ponentes/dirk-guldi.jpg", // ajusta si tu archivo se llama distinto
-    },
-    {
-      code: "PL2",
       name: "João Sérgio Seixas de Melo",
       affiliation: "University of Coimbra",
       title: "Associate Professor",
       bio:
         "Director of the Coimbra Chemistry Centre (since 2024) and leader of the Photochemistry Group at the University of Coimbra. His work spans fast reaction kinetics, laser-based photochemical studies and advanced photophysical processes, with extensive publication and supervision experience.",
       photo: "/assets/ponentes/joao-sergio.jpg", // ajusta si tu archivo se llama distinto
+    },
+    {
+      code: "PL2",
+      name: "Dirk Guldi",
+      affiliation: "Friedrich-Alexander University Erlangen-Nürnberg",
+      title: "Professor of Chemistry",
+      bio:
+        "His research focuses on controlling photon and charge management in molecules and nanoscale materials. The group designs, synthesizes and characterizes novel nanometer-scale materials for solar energy conversion, optimizing charge separation/transport and recombination dynamics using advanced spectroscopic and microscopic techniques.",
+      photo: "/assets/ponentes/dirk-guldi.jpg", // ajusta si tu archivo se llama distinto
     },
     {
       code: "PL3",
